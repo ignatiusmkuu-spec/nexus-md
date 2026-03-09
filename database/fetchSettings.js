@@ -1,9 +1,16 @@
 const { getSettings } = require('../database/config');
 
-async function fetchSettings() {
-  const data = await getSettings();
+const CACHE_TTL = 30000;
+let _cache = null;
+let _cacheAt = 0;
 
-  return {
+async function fetchSettings() {
+  const now = Date.now();
+  if (_cache && (now - _cacheAt) < CACHE_TTL) {
+    return _cache;
+  }
+  const data = await getSettings();
+  _cache = {
     wapresence: data.wapresence,
     autoread: data.autoread,
     mode: data.mode,
@@ -18,9 +25,17 @@ async function fetchSettings() {
     welcome: data.welcome,
     autobio: data.autobio,
     badword: data.badword,
-    gptdm: data.gptdm, 
+    gptdm: data.gptdm,
     anticall: data.anticall
   };
+  _cacheAt = now;
+  return _cache;
+}
+
+function invalidateCache() {
+  _cache = null;
+  _cacheAt = 0;
 }
 
 module.exports = fetchSettings;
+module.exports.invalidateCache = invalidateCache;

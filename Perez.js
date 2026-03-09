@@ -41,9 +41,7 @@ module.exports = Perez = async (client, m, chatUpdate, store) => {
   badword,
   antibot,
   antitag       
-} = await fetchSettings(); 
-          
-console.log(prefix);
+} = await fetchSettings();
           
     var body =
       m.mtype === "conversation"
@@ -276,16 +274,13 @@ contextInfo: {
         // Document message
         const docMessage = originalMessage.message.documentMessage;
         const fileName = docMessage.fileName || `document_${Date.now()}.dat`;
-        console.log('Attempting to download document...');
         const buffer = await client.downloadMediaMessage(docMessage);
         
        if (!buffer) {
-            console.log('Download failed - empty buffer');
             notificationText += ' (Download Failed)';
             return;
         }
         
-        console.log('Sending document back...');
         await client.sendMessage(sendTo, { 
             document: buffer, 
             fileName: fileName,
@@ -577,7 +572,7 @@ if (antilinkall === 'on' && body.includes('https://') && !Owner && isBotAdmin &&
   
 
     if (cmd && !m.isGroup) {
-      console.log(chalk.black(chalk.bgWhite("[ NEXUS-AI ]"))), color(argsLog, "turquoise"), chalk.magenta("From"), chalk.green(pushname), chalk.yellow(`[ ${m.sender.replace("@s.whatsapp.net", "")} ]`));
+      console.log(chalk.black(chalk.bgWhite("[ NEXUS-AI ]")), color(argsLog, "turquoise"), chalk.magenta("From"), chalk.green(pushname), chalk.yellow(`[ ${m.sender.replace("@s.whatsapp.net", "")} ]`));
     } else if (cmd && m.isGroup) {
       console.log(
         chalk.black(chalk.bgWhite("[ LOGS ]")),
@@ -948,7 +943,6 @@ break;
 
 case "advice":
 reply(advice());
-console.log(advice());
 
 break;
                       case "credits": 
@@ -1899,7 +1893,7 @@ m.reply("*Wait a moment...*");
       return m.reply("𝗤𝘂𝗼𝘁𝗲 𝗮𝗻 𝗶𝗺𝗮𝗴𝗲 𝘄𝗶𝘁𝗵 𝘁𝗵𝗲 𝗶𝗻𝘀𝘁𝗿𝘂𝗰𝘁𝗶𝗼𝗻𝘀 𝗲𝗵!");
     }
     if (!text) {
-      return m.reply("𝗣𝗿𝗼𝘃𝗶𝗱𝗲 𝘀𝗼𝗺𝗲 𝗶𝗻𝘀𝘁𝗿𝘂𝗰𝘁𝗶𝗼𝗻𝘀 𝗲𝗵! 𝗧𝗵𝗶𝘀 𝗶𝘀 PEREZ 𝗔𝗶, 𝘂𝘀𝗶𝗻𝗴 𝗴𝗲𝗺𝗶𝗻𝗶-𝗽𝗿𝗼-𝘃𝗶𝘀𝗶𝗼𝗻 𝘁𝗼 𝗮𝗻𝗮𝗹𝘆𝘀𝗲 𝗶𝗺𝗮𝗴𝗲𝘀.");
+      return m.reply("𝗣𝗿𝗼𝘃𝗶𝗱𝗲 𝘀𝗼𝗺𝗲 𝗶𝗻𝘀𝘁𝗿𝘂𝗰𝘁𝗶𝗼𝗻𝘀 𝗲𝗵! 𝗧𝗵𝗶𝘀 𝗶𝘀 NEXUS 𝗔𝗶, 𝘂𝘀𝗶𝗻𝗴 𝗴𝗲𝗺𝗶𝗻𝗶-𝗽𝗿𝗼-𝘃𝗶𝘀𝗶𝗼𝗻 𝘁𝗼 𝗮𝗻𝗮𝗹𝘆𝘀𝗲 𝗶𝗺𝗮𝗴𝗲𝘀.");
     }
     if (!/image/.test(mime)) {
       return m.reply("𝗛𝘂𝗵 𝘁𝗵𝗶𝘀 𝗶𝘀 𝗻𝗼𝘁 𝗮𝗻 𝗶𝗺𝗮𝗴𝗲! 𝗣𝗹𝗲𝗮𝘀𝗲 𝗧𝗮𝗴 𝗮𝗻 𝗶𝗺𝗮𝗴𝗲 𝘄𝗶𝘁𝗵 𝘁𝗵𝗲 𝗶𝗻𝘀𝘁𝗿𝘂𝗰𝘁𝗶𝗼𝗻𝘀 𝗲𝗵 !");
@@ -2523,7 +2517,7 @@ let fdr = await client.downloadAndSaveMediaMessage(m.quoted)
 
 
                     let fta = await uploadtoimgur(fdr)
-                    m.reply("𝗔 𝗺𝗼𝗺𝗲𝗻𝘁, 𝙋𝙀𝙍𝙀𝙕 𝗶𝘀 𝗲𝗿𝗮𝘀𝗶𝗻𝗴 𝘁𝗵𝗲 𝗯𝗮𝗰𝗸𝗴𝗿𝗼𝘂𝗻𝗱. . .");
+                    m.reply("𝗔 𝗺𝗼𝗺𝗲𝗻𝘁, 𝙉𝙀𝙓𝙐𝙎 𝗶𝘀 𝗲𝗿𝗮𝘀𝗶𝗻𝗴 𝘁𝗵𝗲 𝗯𝗮𝗰𝗸𝗴𝗿𝗼𝘂𝗻𝗱. . .");
 
 const image = `https://api.dreaded.site/api/removebg?imageurl=${fta}`
 
@@ -2611,7 +2605,6 @@ if (!text) return m.reply("provide a city/town name");
 const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${text}&units=metric&appid=1ad47ec6172f19dfaf89eb3307f74785`);
         const data = await response.json();
 
-console.log("Weather data:",data);
 
 
         const cityName = data.name;
@@ -3749,7 +3742,7 @@ case "update": case "redeploy": {
                     }
                 );
 
-                await m.reply("Your bot is undergoing a ruthless upgrade, hold tight for the next 2 minutes as the redeploy executes! Once done, you’ll have the freshest version of *PEREZ-BOT* unleashed upon you.");
+                await m.reply("Your bot is undergoing a ruthless upgrade, hold tight for the next 2 minutes as the redeploy executes! Once done, you’ll have the freshest version of *NEXUS-MD* unleashed upon you.");
                 console.log("Build details:", response.data);
             } catch (error) {
                 const errorMessage = error.response?.data || error.message;
@@ -4011,7 +4004,7 @@ break;
           case "leave": { 
                  if (!Owner) throw NotOwner;
                  if (!m.isGroup) throw group;
- await client.sendMessage(m.chat, { text : '𝗚𝗼𝗼𝗱𝗯𝘆𝗲 𝗲𝘃𝗲𝗿𝘆𝗼𝗻𝗲👋. PEREZ-𝗔𝗶 𝗶𝘀 𝗟𝗲𝗮𝘃𝗶𝗻𝗴 𝘁𝗵𝗲 𝗚𝗿𝗼𝘂𝗽 𝗻𝗼𝘄...' , mentions: participants.map(a => a.id)}, { quoted : m }); 
+ await client.sendMessage(m.chat, { text : '𝗚𝗼𝗼𝗱𝗯𝘆𝗲 𝗲𝘃𝗲𝗿𝘆𝗼𝗻𝗲👋. NEXUS-𝗔𝗶 𝗶𝘀 𝗟𝗲𝗮𝘃𝗶𝗻𝗴 𝘁𝗵𝗲 𝗚𝗿𝗼𝘂𝗽 𝗻𝗼𝘄...' , mentions: participants.map(a => a.id)}, { quoted : m }); 
                  await client.groupLeave(m.chat); 
   
              } 
@@ -4687,7 +4680,7 @@ case "movie":
              } 
  break;
  
-      case "perez-md": case "owner": 
+      case "nexus": case "nexus-md": case "owner": 
                       const daddy = [ 'https://files.catbox.moe/yif0t1.mp4',
                                 'https://files.catbox.moe/o93jo6.mp4'
                                                ];
@@ -4729,7 +4722,7 @@ case "movie":
          let res = groups.map(v => v.id) 
          reply(` Broadcasting in ${res.length} Group Chat, in ${res.length * 1.5} seconds`) 
          for (let i of res) { 
-             let txt = `𝙋𝙀𝙍𝙀𝙕-𝙈𝘿 𝗕𝗥𝗢𝗔𝗗𝗖𝗔𝗦𝗧 >\n\n🀄 Message: ${text}\n\nAuthor: ${pushname}` 
+             let txt = `𝙉𝙀𝙓𝙐𝙎-𝙈𝘿 𝗕𝗥𝗢𝗔𝗗𝗖𝗔𝗦𝗧 >\n\n🀄 Message: ${text}\n\nAuthor: ${pushname}` 
              await client.sendMessage(i, { 
                  image: { 
                      url: "https://files.catbox.moe/0uzc42.jpg" 

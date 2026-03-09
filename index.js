@@ -1,6 +1,6 @@
 const sessionName = 'session';
 const session = process.env.SESSION || '';
-const botname = process.env.BOTNAME || '𝙋𝙀𝙍𝙀𝙕-𝙈𝘿';
+const botname = process.env.BOTNAME || '𝙉𝙀𝙓𝙐𝙎-𝙈𝘿';
 const port = process.env.PORT || 5000;
 
 const {
@@ -81,7 +81,7 @@ try {
   console.log(`using WA v${version.join(".")}, isLatest: ${isLatest}`);
   console.log(
     color(
-      figlet.textSync("PEREZ-MD", {
+      figlet.textSync("NEXUS-MD", {
         font: "Standard",
         horizontalLayout: "default",
         vertivalLayout: "default",
@@ -95,9 +95,11 @@ try {
     version,
     logger: pino({ level: "silent" }),
     printQRInTerminal: false,
-    browser: ["PEREZ", "Safari", "5.1.7"],
+    browser: ["NEXUS-MD", "Safari", "5.1.7"],
     auth: state,
-syncFullHistory: true,
+    syncFullHistory: false,
+    generateHighQualityLinkPreview: false,
+    keepAliveIntervalMs: 30000,
   });
 
 store.bind(client.ev);

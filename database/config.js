@@ -93,7 +93,11 @@ async function updateSetting(key, value) {
       [value, key]
     );
 
-   
+    try {
+      const { invalidateCache } = require('./fetchSettings');
+      invalidateCache();
+    } catch (_) {}
+
     return true;
   } catch (err) {
     console.error("❌ Failed to update setting:", err.message || err);
