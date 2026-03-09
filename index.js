@@ -1023,8 +1023,8 @@ client.sendFile = async(jid, PATH, fileName, quoted = {}, options = {}) => {
 }
 
 app.use(express.static("perez"));
-app.get("/", (req, res) => res.sendFile(__dirname + "/index.html"));
-app.listen(port, () => console.log(`📡 Connected on port http://localhost:${port}`));
+app.get("/", (req, res) => res.sendFile(__dirname + "/perez/index.html"));
+app.listen(port, "0.0.0.0", () => console.log(`📡 NEXUS-MD running at http://0.0.0.0:${port}`));
 
 startperez();
 

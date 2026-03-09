@@ -29,7 +29,7 @@ const { smsg, formatp, tanggal, formatDate, getTime,  sleep, generateProfilePict
 const { exec, spawn, execSync } = require("child_process");
 module.exports = Perez = async (client, m, chatUpdate, store) => {
   try {
-	  const {
+          const {
   wapresence,
   autoread,
   mode,
@@ -40,11 +40,11 @@ module.exports = Perez = async (client, m, chatUpdate, store) => {
   gptdm,
   badword,
   antibot,
-  antitag	
+  antitag       
 } = await fetchSettings(); 
-	  
+          
 console.log(prefix);
-	  
+          
     var body =
       m.mtype === "conversation"
         ? m.message.conversation
@@ -61,7 +61,7 @@ console.log(prefix);
         : "";
 var budy = typeof m.text == "string" ? m.text : "";
 var msgDreaded = m.message.extendedTextMessage?.contextInfo?.quotedMessage;
-	  
+          
    // leave the prefix string empty if you don't want the bot to use a prefix
 const Heroku = require("heroku-client");  
 const appname = process.env.APP_NAME || '';
@@ -121,7 +121,7 @@ const badwords = bad.split(",")
       .map(p => p.pn)
   : [];
     const isBotAdmin = m.isGroup ? groupAdmin.includes(botNumber) : false; 
-	const groupSender = m.isGroup && groupMetadata
+        const groupSender = m.isGroup && groupMetadata
   ? (() => {
       const found = groupMetadata.participants.find(p => 
         p.id === sender || client.decodeJid(p.id) === client.decodeJid(sender)
@@ -215,7 +215,7 @@ async function handleMessageRevocation(client, revocationMessage, targetChat = n
 try {
 
 if (deletedBy.includes(botNumber)) return;
-	
+        
 if (originalMessage.message?.conversation) {
         // Text message
         const messageText = originalMessage.message.conversation;
@@ -235,7 +235,7 @@ if (originalMessage.message?.conversation) {
           const buffer = await client.downloadMediaMessage(originalMessage.message.imageMessage);
           await client.sendMessage(sendTo, { 
             image: buffer,
-	    caption: `${notificationText}\n\nImage caption: ${originalMessage.message.imageMessage.caption}`
+            caption: `${notificationText}\n\nImage caption: ${originalMessage.message.imageMessage.caption}`
           });
         } catch (mediaError) {
           console.error('Failed to download image:', mediaError);
@@ -258,7 +258,7 @@ if (originalMessage.message?.conversation) {
           await client.sendMessage(sendTo, { text: notificationText });
         }
       } else if (originalMessage.message?.stickerMessage) {
-	 notificationText += `📷𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗠𝗲𝗱𝗶𝗮: [Sticker]`;
+         notificationText += `📷𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗠𝗲𝗱𝗶𝗮: [Sticker]`;
       // Sticker message
       const buffer = await client.downloadMediaMessage(originalMessage.message.stickerMessage);      
       await client.sendMessage(sendTo, { sticker: buffer, 
@@ -300,7 +300,7 @@ contextInfo: {
           renderLargerThumbnail: true
           }}});
       } else if (originalMessage.message?.audioMessage) {
-	      notificationText += `🚮 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗠𝗲𝗱𝗶𝗮: [Audio]`;
+              notificationText += `🚮 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗠𝗲𝗱𝗶𝗮: [Audio]`;
       // Audio message
       const buffer = await client.downloadMediaMessage(originalMessage.message.audioMessage);
       const isPTT = originalMessage.message.audioMessage.ptt === true;
@@ -314,7 +314,7 @@ contextInfo: {
           mediaType: 1,
           renderLargerThumbnail: true
           }}});
-      }	      
+      }       
     } catch (error) {
       console.error('Error handling deleted message:', error);
       notificationText += `\n\n⚠️ Error recovering deleted content 😓`;
@@ -322,17 +322,17 @@ contextInfo: {
     }
   }
 }
-	  
+          
     // Push Message To Console
     let argsLog = budy.length > 30 ? `${q.substring(0, 30)}...` : budy;
 
 if (wapresence === 'recording' && !m.isGroup) { 
              client.sendPresenceUpdate('recording', m.chat);
-	
+        
 } else if (wapresence === 'typing' && !m.isGroup) { 
              client.sendPresenceUpdate('composing', m.chat);
-	
-      }	else if (wapresence === 'online' && !m.isGroup) { 
+        
+      } else if (wapresence === 'online' && !m.isGroup) { 
              client.sendPresenceUpdate('available', m.chat);
     }
     
@@ -386,9 +386,9 @@ if (antidelete !== "off") {
     }
 }
 
-	  
+          
 
-	  
+          
          
 function _0x4f1b(_0x44e88, _0x1e223f) {
     var _0x3db626 = _0x11cc();
@@ -474,14 +474,14 @@ if (budy.startsWith('>')) {
 
 
 async function mp3d () {
-	
+        
 let { key } = await client.sendMessage(m.chat, {audio: fs.readFileSync('./menu.mp3'), mimetype:'audio/mp4'}, {quoted: m })
 
 }
  
     if (gptdm === 'on' && m.chat.endsWith("@s.whatsapp.net")) {
 
-  	
+        
 
   // if (!text) return reply("I need more text. For better experience with my inbox AI make longer statements.");
 
@@ -497,25 +497,25 @@ let { key } = await client.sendMessage(m.chat, {audio: fs.readFileSync('./menu.m
           }
     }
 
-	  
+          
 async function loading () {
 var lod = [
 "🖤",
 "🤬",
-"❤",	
-	"😡",
+"❤",    
+        "😡",
    "💙",
-	"😂",
-	"💛",
-"𝗣𝗶𝗻𝗴𝗶𝗻𝗴 𝗖𝗼𝗺𝗽𝗹𝗲𝘁𝗲!"	
+        "😂",
+        "💛",
+"𝗣𝗶𝗻𝗴𝗶𝗻𝗴 𝗖𝗼𝗺𝗽𝗹𝗲𝘁𝗲!"     
 ]
 let { key } = await client.sendMessage(from, {text: '𝗣𝗼𝗻𝗴'})
 
 for (let i = 0; i < lod.length; i++) {
 await client.sendMessage(from, {text: lod[i], edit: key });
 }
-	  }
-	  const getGreeting = () => {
+          }
+          const getGreeting = () => {
             const currentHour = DateTime.now().setZone('Africa/Nairobi').hour;
 
             if (currentHour >= 5 && currentHour < 12) {
@@ -533,7 +533,7 @@ await client.sendMessage(from, {text: lod[i], edit: key });
         const getCurrentTimeInNairobi = () => {
             return DateTime.now().setZone('Africa/Nairobi').toLocaleString(DateTime.TIME_SIMPLE);
         };
-	  const date = new Date() 
+          const date = new Date() 
 if (badword === 'on' && isBotAdmin && !isAdmin && body && (new RegExp('\\b' + badwords.join('\\b|\\b') + '\\b')).test(body.toLowerCase())) {
             
      client.groupParticipantsUpdate(from, [sender], 'remove')
@@ -577,7 +577,7 @@ if (antilinkall === 'on' && body.includes('https://') && !Owner && isBotAdmin &&
   
 
     if (cmd && !m.isGroup) {
-      console.log(chalk.black(chalk.bgWhite("[ RAVEN-AI ]")), color(argsLog, "turquoise"), chalk.magenta("From"), chalk.green(pushname), chalk.yellow(`[ ${m.sender.replace("@s.whatsapp.net", "")} ]`));
+      console.log(chalk.black(chalk.bgWhite("[ NEXUS-AI ]"))), color(argsLog, "turquoise"), chalk.magenta("From"), chalk.green(pushname), chalk.yellow(`[ ${m.sender.replace("@s.whatsapp.net", "")} ]`));
     } else if (cmd && m.isGroup) {
       console.log(
         chalk.black(chalk.bgWhite("[ LOGS ]")),
@@ -594,97 +594,91 @@ if (antilinkall === 'on' && body.includes('https://') && !Owner && isBotAdmin &&
       switch (command) {
       case "help":
         case "menu":
-		      await mp3d ()
-		      
-let cap = `HI 😁🌄, ${getGreeting()}\n\n💫✦━━━━━━━━━━━━━━⟬🌌⟭━━━━━━━━━━━━━━✦💫
-          ✧༺🌌 𝗡𝗘𝗫𝗨𝗦 𝗠𝗗 🌌༻✧
-       𓆩⟡𓆪 ✦ The Cosmic Power Menu ✦ 𓆩⟡𓆪
-💫✦━━━━━━━━━━━━━━⟬🌌⟭━━━━━━━━━━━━━━✦💫
+                      await mp3d ()
+                      
+let cap = `
+╔══════════════════════════════╗
+║  ⚡ 𝗡 𝗘 𝗫 𝗨 𝗦 - 𝗠 𝗗  ⚡  ║
+║  🌌 𝑻𝒉𝒆 𝑼𝒍𝒕𝒊𝒎𝒂𝒕𝒆 𝑾𝑨 𝑩𝒐𝒕 🌌  ║
+╚══════════════════════════════╝
 
-🌟〘ＳＥＴＴＩＮＧＳ ＣＭＤＳ〙🌟
-╭═══⊹⊱✦⊰⊹═══╮
-┃ 🌌 ✦ Antidelete  
-┃ 🌌 ✦ Anticall  
-┃ 🌌 ✦ Antibot  
-┃ 🌌 ✦ Badword  
-┃ 🌌 ✦ Antitag  
-┃ 🌌 ✦ Antilink ⟡ Antilinkall  
-┃ 🌌 ✦ Gptdm  
-┃ 🌌 ✦ Autoview ⟡ Autolike  
-┃ 🌌 ✦ Autoread ⟡ Autobio  
-┃ 🌌 ✦ Mode ⟡ Prefix  
-┃ 🌌 ✦ Welcome ⟡ Goodbye  
-┃ 🌌 ✦ Wapresence  
-╰═══⊹⊱✦⊰⊹═══╯
+👋 ${getGreeting()}, *${pushname}*!
+🕐 *Time:* ${getCurrentTimeInNairobi()} (EAT)
+⚡ *Uptime:* ${runtime(process.uptime())}
+🤖 *Prefix:* [ ${prefix} ]
 
-        🎶 SONGS MENU 🎶
-═════════════════════════════
-▶ Command Prefix:  .music
-─────────────────────────────
-🎵  .music  <name>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-💎〘ＩＣＯＮＳ〙💎
-╭───────✦❖✦───────╮
-┃ ✧ Icon ⟡ Gcprofile  
-┃ ✧ Subject ⟡ Desc  
-┃ ✧ Leave ⟡ Add  
-┃ ✧ Tagall ⟡ Hidetag  
-┃ ✧ Revoke ⟡ Reset  
-┃ ✧ Mute ⟡ Unmute  
-╰───────✦❖✦───────╯
+🛡️ *╔══〘 S E T T I N G S 〙══╗*
+┃ ⚙️ antidelete • anticall
+┃ ⚙️ antibot • antitag • badword
+┃ ⚙️ antilink • antilinkall
+┃ ⚙️ autoview • autolike • autoread
+┃ ⚙️ autobio • gptdm • wapresence
+┃ ⚙️ mode • prefix • welcome
+*╚══════════════════════════╝*
 
-⚡〘ＣＯＤＩＮＧ〙⚡
-╭─▣═━⊰✧⊱━═▣─╮
-┃ 💻 Carbon Generator  
-┃ 💻 Compile-c ⟡ c++  
-┃ 💻 Compile-js ⟡ py  
-┃ 💻 Encrypt ⟡ Eval  
-╰─▣═━⊰✧⊱━═▣─╯
+🎵 *╔══〘 M U S I C & M E D I A 〙══╗*
+┃ 🎶 music • ytmp3 • ytmp4
+┃ 📱 facebook • instagram • tiktok
+┃ 📌 pinterest • apk • app
+*╚═══════════════════════════╝*
 
-🌙〘ＧＥＮＥＲＡＬ〙🌙
-╭═══⋆★⋆═══╮
-┃ 🌠 Owner ⟡ Nexus  
-┃ 🌠 Script ⟡ Menu  
-┃ 🌠 List ⟡ Ping ⟡ Poll  
-┃ 🌠 Alive ⟡ Speed  
-┃ 🌠 Repo ⟡ Runtime ⟡ Uptime  
-┃ 🌠 Dp ⟡ Dlt ⟡ Mail ⟡ Inbox  
-┃ 🌠 News ⟡ Anime  
-╰═══⋆★⋆═══╯
- ② DOWNLOADS ＣＭＤＳ 〙🎶
-╭───⊹⊱🎼⊰⊹───╮
-┃ 🎵 Music  
-┃ 📱 Facebook  
-┃ 📸 Instagram  
-┃ ▶️ YouTube  
-┃ 📌 Pinterest  
+🌐 *╔══〘 G R O U P  T O O L S 〙══╗*
+┃ 👥 add • kick • promote • demote
+┃ 📌 tagall • hidetag • linkgroup
+┃ 🔇 mute • unmute • revoke
+┃ 🖼️ icon • gcprofile • subject
+┃ 💬 desc • leave • reset
+*╚═══════════════════════════╝*
 
-👑〘ＯＷＮＥＲ〙👑
-╭─☆☆━✦━☆☆─╮
-┃ 👾 Restart ⟡ Admin ⟡ Cast  
-┃ 👾 Broadcast ⟡ Join  
-┃ 👾 Getvar ⟡ Setvar  
-┃ 👾 Botpp ⟡ Fullpp  
-┃ 👾 Block ⟡ Unblock  
-┃ 👾 Kill ⟡ Kill2 ⟡ Save  
-╰─☆☆━✦━☆☆─╯
+🤖 *╔══〘 A I  P O W E R E D 〙══╗*
+┃ 🧠 gemini • gpt • bard
+┃ 👁️ img2text (vision AI)
+┃ 💬 gptdm (auto-reply DMs)
+*╚═════════════════════════╝*
 
-☠〘ＰＲＡＮＫ〙☠
-╭─☯─✦☠✦─☯─╮
-┃ 💀 Hack Universe 🌌  
-╰─☯─✦☠✦─☯─╯
+🎨 *╔══〘 L O G O  M A K E R 〙══╗*
+┃ ✨ metallic • ice • snow • neon
+┃ 🔥 silva • devil • thunder
+┃ 🌊 impressive • graffiti • cat
+┃ 🏔️ sand • gold • arena • fog
+┃ 🐉 dragonball • carbon
+*╚══════════════════════════╝*
 
-🔥〘ＬＯＧＯＳ〙🔥
-╭═══✦🔥✦═══╮
-┃ 🎨 Logo Maker ⟡ Graffiti  
-┃ 🎨 Sand ⟡ Gold ⟡ Arena  
-┃ 🎨 Dragonball ⟡ Anime Logos  
-╰═══✦🔥✦═══╯
+💻 *╔══〘 C O D I N G  L A B 〙══╗*
+┃ 🖥️ compile-c • compile-cpp
+┃ 🐍 compile-py • compile-js
+┃ 🔐 encrypt • eval • carbon
+*╚══════════════════════════╝*
 
-💫✦━━━━━━━━━━━━━━⟬🌌⟭━━━━━━━━━━━━━━✦💫
-        ✧༺👑 𝗡𝗘𝗫𝗨𝗦 𝗠𝗗 👑༻✧
-  "⚡ A Bot Beyond The Stars ⚡"
-💫✦━━━━━━━━━━━━━━⟬🌌⟭━━━━━━━━━━━━━━✦💫
+🌟 *╔══〘 G E N E R A L 〙══╗*
+┃ 🏓 ping • speed • uptime • runtime
+┃ 📋 menu • list • poll • alive
+┃ 📰 news • anime • advice • calc
+┃ 📧 mail • inbox • temp-mail
+┃ 🖼️ dp • sticker • mix • toimg
+┃ 🎲 joke • quote • fact • weather
+*╚═══════════════════════════╝*
+
+👑 *╔══〘 O W N E R  Z O N E 〙══╗*
+┃ 🔄 restart • broadcast • cast
+┃ 🚫 block • unblock • join
+┃ ⚙️ setvar • getvar • botpp
+┃ 💀 kick-all • save
+*╚═════════════════════════╝*
+
+☠️ *╔══〘 F U N & P R A N K 〙══╗*
+┃ 💀 hack • universe simulator
+┃ 😂 tictactoe • pair • rent
+┃ 🎰 emoji-mix
+*╚══════════════════════════╝*
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ╔═══════════════════════╗
+  ║  ⚡ *𝗡𝗘𝗫𝗨𝗦-𝗠𝗗* ⚡        ║
+  ║  🌌 Beyond The Stars  ║
+  ╚═══════════════════════╝
 `;
 
 if (menu === 'VIDEO') {
@@ -723,8 +717,8 @@ client.sendMessage(m.chat, {
           // Group Commands
 break;
 
-			  case "antilink": {
-	if(!Owner) throw NotOwner;
+                          case "antilink": {
+        if(!Owner) throw NotOwner;
   const settings = await getSettings();
   const current = settings.antilink;
   if (!text) return reply(`🛡️ Antilink is currently *${current.toUpperCase()}*`);
@@ -755,10 +749,10 @@ try {
     m.reply("Error in calculation. Please check your expression.");
   }
 }
-break;			  
+break;                    
 
 case "antilinkall": {
-	if(!Owner) throw NotOwner;
+        if(!Owner) throw NotOwner;
   const settings = await getSettings();
   const current = settings.antilinkall;
   if (!text) return reply(`🛡️ Antilinkall is currently *${current.toUpperCase()}*`);
@@ -767,10 +761,10 @@ case "antilinkall": {
   await updateSetting("antilinkall", text);
   reply(`✅ Antilinkall has been turned *${text.toUpperCase()}*`);
 }
-break;		      
+break;                
 
 case "antidelete": {
-	if(!Owner) throw NotOwner;
+        if(!Owner) throw NotOwner;
   const settings = await getSettings();
   const current = settings.antidelete;
   if (!text) return reply(`😊 Antidelete is currently *${current.toUpperCase()}*`);
@@ -779,10 +773,10 @@ case "antidelete": {
   await updateSetting("antidelete", text);
   reply(`✅ Antidelete has been turned *${text.toUpperCase()}*`);
 }
-break;	
-		      
+break;  
+                      
 case "gptdm": {
-	if(!Owner) throw NotOwner;
+        if(!Owner) throw NotOwner;
   const settings = await getSettings();
   const current = settings.gptdm;
   if (!text) return reply(`🙂‍↕️ gptdm is currently *${current.toUpperCase()}*`);
@@ -792,9 +786,9 @@ case "gptdm": {
   reply(`✅ Gptdm has been turned *${text.toUpperCase()}*`);
 }
 break;
-		      
+                      
 case "autoread": {
-	if(!Owner) throw NotOwner;
+        if(!Owner) throw NotOwner;
   const settings = await getSettings();
   const current = settings.autoread;
   if (!text) return reply(`📨 Autoread is currently *${current.toUpperCase()}*`);
@@ -806,7 +800,7 @@ case "autoread": {
 break;
 
 case "mode": {
-	if(!Owner) throw NotOwner;
+        if(!Owner) throw NotOwner;
   const settings = await getSettings();
   const current = settings.mode;
   if (!text) return reply(`👥️ Mode is currently *${current.toUpperCase()}*`);
@@ -841,7 +835,7 @@ if (newPrefix === 'none') {
 break;
 
 case "autolike": {
-	if(!Owner) throw NotOwner;
+        if(!Owner) throw NotOwner;
   const settings = await getSettings();
   const current = settings.autolike;
   if (!text) return reply(`🫠 Autolike is currently *${current.toUpperCase()}*`);
@@ -849,12 +843,12 @@ case "autolike": {
   if (text === current) return reply(`✅ Autolike is already *${text.toUpperCase()}*`);
   await updateSetting("autolike", text);
   reply(`✅ Autolike has been turned *${text.toUpperCase()}*`);
-	
+        
 }
 break;
 
 case "autobio": {
-	if(!Owner) throw NotOwner;
+        if(!Owner) throw NotOwner;
   const settings = await getSettings();
   const current = settings.autobio;
   if (!text) return reply(`😇 Autobio is currently *${current.toUpperCase()}*`);
@@ -862,12 +856,12 @@ case "autobio": {
   if (text === current) return reply(`✅ Autobio is already *${text.toUpperCase()}*`);
   await updateSetting("autobio", text);
   reply(`✅ Autobio has been turned *${text.toUpperCase()}*`);
-	
+        
 }
 break;
-		      
+                      
 case "autoview": {
-	if(!Owner) throw NotOwner;
+        if(!Owner) throw NotOwner;
   const settings = await getSettings();
   const current = settings.autoview;
   if (!text) return reply(`👀 Auto view status is currently *${current.toUpperCase()}*`);
@@ -875,7 +869,7 @@ case "autoview": {
   if (text === current) return reply(`✅ Auto view status is already *${text.toUpperCase()}*`);
   await updateSetting("autoview", text);
   reply(`✅ Auto view status updated to *${text.toUpperCase()}*`);
-	
+        
 }
 break;
 
@@ -892,7 +886,7 @@ case "wapresence": {
 break;
 
 case "badword": {
-	if(!Owner) throw NotOwner;
+        if(!Owner) throw NotOwner;
   const settings = await getSettings();
   const current = settings.badword;
   if (!text) return reply(`😈 Badword is currently *${current.toUpperCase()}*`);
@@ -901,10 +895,10 @@ case "badword": {
   await updateSetting("badword", text);
   reply(`✅ Badword has been turned *${text.toUpperCase()}*`);
 }
-break;	
-		
+break;  
+                
 case "anticall": {
-	if(!Owner) throw NotOwner;
+        if(!Owner) throw NotOwner;
   const settings = await getSettings();
   const current = settings.anticall;
   if (!text) return reply(`🔰 Anticall is currently *${current.toUpperCase()}*`);
@@ -914,9 +908,9 @@ case "anticall": {
   reply(`✅ Anticall has been turned *${text.toUpperCase()}*`);
 }
 break;
-	
+        
 case "antibot": {
-	if(!Owner) throw NotOwner;
+        if(!Owner) throw NotOwner;
   const settings = await getSettings();
   const current = settings.antibot;
   if (!text) return reply(`👾 Antibot is currently *${current.toUpperCase()}*`);
@@ -925,10 +919,10 @@ case "antibot": {
   await updateSetting("antibot", text);
   reply(`✅ Antibot has been turned *${text.toUpperCase()}*`);
 }
-break;	
-	
+break;  
+        
 case "antitag": {
-	if(!Owner) throw NotOwner;
+        if(!Owner) throw NotOwner;
   const settings = await getSettings();
   const current = settings.antitag;
   if (!text) return reply(`🤖 Antitag is currently *${current.toUpperCase()}*`);
@@ -937,10 +931,10 @@ case "antitag": {
   await updateSetting("antitag", text);
   reply(`✅ Antitag has been turned *${text.toUpperCase()}*`);
 }
-break;	 
-	
+break;   
+        
 case "welcome": {
-	if(!Owner) throw NotOwner;
+        if(!Owner) throw NotOwner;
   const settings = await getSettings();
   const current = settings.welcome;
   if (!text) return reply(`🕳 Welcome is currently *${current.toUpperCase()}*`);
@@ -948,22 +942,118 @@ case "welcome": {
   if (text === current) return reply(`✅ Welcome is already *${text.toUpperCase()}*`);
   await updateSetting("welcome", text);
   reply(`✅ Welcome has been turned *${text.toUpperCase()}*`);
-	
+        
 }
-break;	 
+break;   
 
 case "advice":
 reply(advice());
 console.log(advice());
 
 break;
-		      case "credits": 
+                      case "credits": 
   
-              client.sendMessage(m.chat, { image: { url: 'https://files.catbox.moe/k2u5ks.jpg' }, caption: `We express sincere gratitude and acknowledgement to the following:\n\n -Dika Ardnt ➪ Indonesia\n - Writing the base code using case method\nhttps://github.com/DikaArdnt\n\n -Adiwajshing ➪ India\n - Writing and Coding the bot's library (baileys)\nhttps://github.com/WhiskeySockets/Baileys\n\n -WAWebSockets Discord Server community\n-Maintaining and reverse engineering the Web Sockets\nhttps://discord.gg/WeJM5FP9GG\n\n - Nick Hunter ➪ Kenya\n - Actively compiling and debugging parts of this bot script\nhttps://github.com/HunterNick2\n\n - Fortunatus Mokaya ➪ Kenya\n - Founder of the bot Base\nhttps://github.com/Fortunatusmokaya\n\n𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧`}); 
+              client.sendMessage(m.chat, { image: { url: 'https://files.catbox.moe/k2u5ks.jpg' }, caption: `We express sincere gratitude and acknowledgement to the following:\n\n -Dika Ardnt ➪ Indonesia\n - Writing the base code using case method\nhttps://github.com/DikaArdnt\n\n -Adiwajshing ➪ India\n - Writing and Coding the bot's library (baileys)\nhttps://github.com/WhiskeySockets/Baileys\n\n -WAWebSockets Discord Server community\n-Maintaining and reverse engineering the Web Sockets\nhttps://discord.gg/WeJM5FP9GG\n\n - Nexus Hunter ➪ Kenya\n - Actively compiling and debugging parts of this bot script\nhttps://github.com/HunterNick2\n\n - Fortunatus Mokaya ➪ Kenya\n - Founder of the bot Base\nhttps://github.com/Fortunatusmokaya\n\n𝗡𝗘𝗫𝗨𝗦-𝗕𝗢𝗧`}); 
  break;
-			  
-	  case 'poll': {
-		  let [poll, opt] = text.split("|")
+
+case 'joke': {
+  try {
+    const jokeRes = await axios.get('https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,racist&type=twopart');
+    const j = jokeRes.data;
+    if (j.type === 'twopart') {
+      await m.reply(`😂 *JOKE OF THE DAY*\n\n❓ ${j.setup}\n\n🤣 ${j.delivery}`);
+    } else {
+      await m.reply(`😂 *JOKE OF THE DAY*\n\n${j.joke}`);
+    }
+  } catch (e) {
+    m.reply("Couldn't fetch a joke right now. Try again!");
+  }
+}
+break;
+
+case 'quote': {
+  try {
+    const qRes = await axios.get('https://api.quotable.io/random');
+    const q = qRes.data;
+    await m.reply(`💭 *QUOTE OF THE MOMENT*\n\n_"${q.content}"_\n\n— *${q.author}*`);
+  } catch (e) {
+    m.reply("Couldn't fetch a quote right now. Try again!");
+  }
+}
+break;
+
+case 'fact': {
+  try {
+    const fRes = await axios.get('https://uselessfacts.jsph.pl/api/v2/facts/random?language=en');
+    await m.reply(`🧠 *RANDOM FACT*\n\n${fRes.data.text}`);
+  } catch (e) {
+    m.reply("Couldn't fetch a fact right now. Try again!");
+  }
+}
+break;
+
+case 'weather': {
+  if (!text) return m.reply("*Usage:* weather <city>\n*Example:* weather Nairobi");
+  try {
+    const wRes = await axios.get(`https://wttr.in/${encodeURIComponent(text)}?format=j1`);
+    const w = wRes.data;
+    const cur = w.current_condition[0];
+    const area = w.nearest_area[0];
+    const city = area.areaName[0].value;
+    const country = area.country[0].value;
+    const tempC = cur.temp_C;
+    const feelsLike = cur.FeelsLikeC;
+    const humidity = cur.humidity;
+    const desc = cur.weatherDesc[0].value;
+    const windKm = cur.windspeedKmph;
+    await m.reply(
+`🌤️ *WEATHER REPORT*
+━━━━━━━━━━━━━━━━
+📍 *Location:* ${city}, ${country}
+🌡️ *Temperature:* ${tempC}°C (Feels like ${feelsLike}°C)
+🌥️ *Condition:* ${desc}
+💧 *Humidity:* ${humidity}%
+💨 *Wind Speed:* ${windKm} km/h
+━━━━━━━━━━━━━━━━
+⚡ _Powered by NEXUS-MD_`
+    );
+  } catch (e) {
+    m.reply(`Couldn't get weather for *${text}*. Check the city name and try again.`);
+  }
+}
+break;
+
+case 'tts': {
+  if (!text) return m.reply("*Usage:* tts <text>\n*Example:* tts Hello World");
+  try {
+    const googleTTS = require('google-tts-api');
+    const url = googleTTS.getAudioUrl(text, { lang: 'en', slow: false, host: 'https://translate.google.com' });
+    await client.sendMessage(m.chat, { audio: { url }, mimetype: 'audio/mp4', ptt: true }, { quoted: m });
+  } catch (e) {
+    m.reply("Text-to-speech failed: " + e.message);
+  }
+}
+break;
+
+case 'yt': case 'ytinfo': {
+  if (!text) return m.reply("*Usage:* yt <search query>\n*Example:* yt Afrobeats 2025");
+  try {
+    const results = await yts(text);
+    const vids = results.videos.slice(0, 5);
+    if (!vids.length) return m.reply("No results found for: " + text);
+    let msg = `🎬 *YouTube Search Results*\n━━━━━━━━━━━━━━━\n\n`;
+    vids.forEach((v, i) => {
+      msg += `*${i + 1}.* ${v.title}\n⏱ ${v.timestamp} | 👁 ${v.views.toLocaleString()} views\n🔗 ${v.url}\n\n`;
+    });
+    await m.reply(msg);
+  } catch (e) {
+    m.reply("YouTube search failed: " + e.message);
+  }
+}
+break;
+
+          case 'poll': {
+                  let [poll, opt] = text.split("|")
 
 if (text.split("|") < 2)
                 return m.reply(`Wrong format::\nExample:- poll who is the best president|Putin, Ruto`);
@@ -980,13 +1070,13 @@ let options = []
          
    })
 
-	  }
-		break;
+          }
+                break;
       
-	      case 'metallic': {
-		      var mumaker = require("mumaker");
-		     if (!text || text == "") {
-      m.reply("Example Usage : " + prefix + "Metallic Nick");
+              case 'metallic': {
+                      var mumaker = require("mumaker");
+                     if (!text || text == "") {
+      m.reply("Example Usage : " + prefix + "Metallic Nexus");
       return;
     }
      try {
@@ -1002,12 +1092,12 @@ let options = []
     m.reply(_0x180d0734);
   }
 }
-	break; 
+        break; 
 
-	case "pair": case "rent": {
+        case "pair": case "rent": {
 if (!q) return await reply("Please provide valid Whatsapp number  Example- pair 25411428XXX");
 
-	try {	
+        try {   
 const numbers = q.split(',') .map((v) => v.replace(/[^0-9]/g, '')) 
             .filter((v) => v.length > 5 && v.length < 20); 
 
@@ -1021,28 +1111,28 @@ for (const number of numbers) {
 
             if (!result[0]?.exists) {
                 return m.reply(`That number is not registered on WhatsApp❗️`);
-	    }
-	
+            }
+        
 m.reply("Wait a moment for the code")
-	
+        
         let { data } = await axios(`https://perez-md-pairing.onrender.com/code?number=${number}`);
         let code = data.code;
-		
+                
 const Code = ` ${code}`
 await sleep(5000);
-	
+        
  await m.reply(Code);
-	}
+        }
     } catch (error) {
         console.error(error);
         await reply("An error occurred. Please try again later.");
     }
 };
-break;	      	      
-	      case 'ice': {
-		      var mumaker = require("mumaker");
-		     if (!text || text == "") {
-      m.reply("Example Usage : " + prefix + "Ice Nick");
+break;                
+              case 'ice': {
+                      var mumaker = require("mumaker");
+                     if (!text || text == "") {
+      m.reply("Example Usage : " + prefix + "Ice Nexus");
       return;
     }
      try {
@@ -1058,10 +1148,10 @@ break;
     m.reply(_0x180d);
   }
 }
-	break; 
-	      case 'snow': {
-		      var mumaker = require("mumaker");
-		     if (!text || text == "") {
+        break; 
+              case 'snow': {
+                      var mumaker = require("mumaker");
+                     if (!text || text == "") {
       m.reply("Example Usage : " + prefix + "Snow perez");
       return;
     }
@@ -1078,11 +1168,11 @@ break;
     m.reply(_0180d034);
   }
 }
-	break;
-	      case 'impressive': {
-		      var mumaker = require("mumaker");
-		     if (!text || text == "") {
-      m.reply("Example Usage : " + prefix + "impressive Nick");
+        break;
+              case 'impressive': {
+                      var mumaker = require("mumaker");
+                     if (!text || text == "") {
+      m.reply("Example Usage : " + prefix + "impressive Nexus");
       return;
     }
      try {
@@ -1098,16 +1188,16 @@ break;
     m.reply(_0x18d034);
   }
 }
-	break; 
-	      case 'noel': {
-		      var mumaker = require("mumaker");
-		     
-		      if (!text || text == "") {
+        break; 
+              case 'noel': {
+                      var mumaker = require("mumaker");
+                     
+                      if (!text || text == "") {
     m.reply("Example usage: " + prefix + "Noel myself");
     return;
   } 
   try {
-	
+        
   var hunte = await mumaker.ephoto("https://en.ephoto360.com/noel-text-effect-online-99.html", text);
 m.reply("*Wait a moment...*");
     await client.sendMessage(m.chat, {
@@ -1122,16 +1212,16 @@ m.reply("*Wait a moment...*");
     m.reply("💀💀" + _0x29df9);
   }
 }
-	 break;
-	      case 'water':{
-		      var mumaker = require("mumaker");
-		     
-		      if (!text || text == "") {
+         break;
+              case 'water':{
+                      var mumaker = require("mumaker");
+                     
+                      if (!text || text == "") {
     m.reply("Example usage: " + prefix + "Water myself");
     return;
   } 
   try {
-	
+        
   var hunterr = await mumaker.ephoto("https://en.ephoto360.com/create-water-effect-text-online-295.html", text);
 m.reply("*Wait a moment...*");
     await client.sendMessage(m.chat, {
@@ -1146,16 +1236,16 @@ m.reply("*Wait a moment...*");
     m.reply("💀💀" + _0x9ddf9);
   }
 }
-	 break;
-	      case 'matrix':{
-		      var mumaker = require("mumaker");
-		     
-		      if (!text || text == "") {
+         break;
+              case 'matrix':{
+                      var mumaker = require("mumaker");
+                     
+                      if (!text || text == "") {
     m.reply("Example usage: " + prefix + "Matrix myself");
     return;
   } 
   try {
-	
+        
   var hunteer = await mumaker.ephoto("https://en.ephoto360.com/matrix-text-effect-154.html", text);
 m.reply("*Wait a moment...*");
     await client.sendMessage(m.chat, {
@@ -1170,16 +1260,16 @@ m.reply("*Wait a moment...*");
     m.reply("💀💀" + _0x29ddf8);
   }
 }
-	 break;
-	      case 'light': {
-		      var mumaker = require("mumaker");
-		     
-		      if (!text || text == "") {
+         break;
+              case 'light': {
+                      var mumaker = require("mumaker");
+                     
+                      if (!text || text == "") {
     m.reply("Example usage: " + prefix + "Light myself");
     return;
   } 
   try {
-	
+        
   var hunteqr = await mumaker.ephoto("https://en.ephoto360.com/light-text-effect-futuristic-technology-style-648.html", text);
 m.reply("*Wait a moment...*");
     await client.sendMessage(m.chat, {
@@ -1194,10 +1284,10 @@ m.reply("*Wait a moment...*");
     m.reply("💀💀" + _0x29ddf4);
   }
 }
-	 break;
-			  
+         break;
+                          
 case "gpass": case 'genpassword': {
-		      try {
+                      try {
         const length = args[0] ? parseInt(args[0]) : 12; // Default length is 12 if not provided
         if (isNaN(length) || length < 8) {
             return reply('Please provide a valid length for the password (Minimum 08 Characters).');
@@ -1227,11 +1317,11 @@ case "gpass": case 'genpassword': {
     }
 }
 break;
-			  
-	      case 'neon':{
-		var mumaker = require("mumaker");
-		     if (!text || text == "") {
-      m.reply("Example Usage : " + prefix + "Neon Nick");
+                          
+              case 'neon':{
+                var mumaker = require("mumaker");
+                     if (!text || text == "") {
+      m.reply("Example Usage : " + prefix + "Neon Nexus");
       return;
     }
      try {
@@ -1247,11 +1337,11 @@ break;
     m.reply(_0x180d034);
   }
 }
-	break; 
-	      case 'silver': case 'silva': {
-		      var mumaker = require("mumaker");
-		          if (!text || text == " ") {
-      m.reply("Example Usage : " + prefix + "Silva Nick");
+        break; 
+              case 'silver': case 'silva': {
+                      var mumaker = require("mumaker");
+                          if (!text || text == " ") {
+      m.reply("Example Usage : " + prefix + "Silva Nexus");
       return;
     }
      try {
@@ -1267,11 +1357,11 @@ break;
     m.reply(_0x180d3);
   }
 }
-	break;
-	      case 'devil':{
-		      var mumaker = require("mumaker");
-		          if (!text || text == "") {
-      m.reply("Example Usage : " + prefix + "Devil Nick");
+        break;
+              case 'devil':{
+                      var mumaker = require("mumaker");
+                          if (!text || text == "") {
+      m.reply("Example Usage : " + prefix + "Devil Nexus");
       return;
     }
      try {
@@ -1287,11 +1377,11 @@ break;
     m.reply(_0x80d03);
   }
 }
-	break;
-	      case 'typography': {
-		      var mumaker = require("mumaker");
-		          if (!text || text == "") {
-      m.reply("Example Usage : " + prefix + "Typography Nick");
+        break;
+              case 'typography': {
+                      var mumaker = require("mumaker");
+                          if (!text || text == "") {
+      m.reply("Example Usage : " + prefix + "Typography Nexus");
       return;
     }
      try {
@@ -1307,10 +1397,10 @@ break;
     m.reply(_0x180d063);
   }
 }
-	break;
-	      case 'purple': {
-		 var mumaker = require("mumaker");
-		      if (!text || text == "") {
+        break;
+              case 'purple': {
+                 var mumaker = require("mumaker");
+                      if (!text || text == "") {
       m.reply("Example Usage : " + prefix + "purple Perez");
       return;
     }
@@ -1327,14 +1417,14 @@ break;
     m.reply(_0x180d03);
   }
 }
-	break;
-	      case 'thunder':{
-		      var mumaker = require("mumaker"); 
-		      if (!text || text == "") {
-      m.reply("Example Usage : " + prefix + "Thunder Nick");
+        break;
+              case 'thunder':{
+                      var mumaker = require("mumaker"); 
+                      if (!text || text == "") {
+      m.reply("Example Usage : " + prefix + "Thunder Nexus");
       return;
     }
-	try {
+        try {
     var _0x29a96 = await mumaker.ephoto("https://en.ephoto360.com/thunder-text-effect-online-97.html", text);
     m.reply("*Wait a moment...*");
     await client.sendMessage(m.chat, {
@@ -1348,13 +1438,13 @@ break;
   }
 }
   break;
-	case 'leaves': {
-		     var mumaker = require("mumaker"); 
-		      if (!text || text == "") {
+        case 'leaves': {
+                     var mumaker = require("mumaker"); 
+                      if (!text || text == "") {
       m.reply("Example Usage : " + prefix + "Leaves 𝗡𝗘𝗫𝗨𝗦-𝗠𝗗");
       return;
     }
-	try {
+        try {
     var _0x14192dl = await mumaker.ephoto("https://en.ephoto360.com/green-brush-text-effect-typography-maker-online-153.html", text);
     m.reply("Wait a moment...");
     await client.sendMessage(m.chat, {
@@ -1369,14 +1459,14 @@ break;
     m.reply(_0x24de3);
   }
 }
-	break;
-	      case '1917': {
-		     var mumaker = require("mumaker"); 
-		      if (!text || text == "") {
+        break;
+              case '1917': {
+                     var mumaker = require("mumaker"); 
+                      if (!text || text == "") {
       m.reply("Example Usage : " + prefix + "1917 perez");
       return;
     }
-	try {
+        try {
     var _0x14192 = await mumaker.ephoto("https://en.ephoto360.com/1917-style-text-effect-523.html", text);
     m.reply("Wait a moment...");
     await client.sendMessage(m.chat, {
@@ -1391,14 +1481,14 @@ break;
     m.reply(_0x24de3dl);
   }
 }
-	break;
-	      case 'arena': {
-		     var mumaker = require("mumaker"); 
-		      if (!text || text == "") {
+        break;
+              case 'arena': {
+                     var mumaker = require("mumaker"); 
+                      if (!text || text == "") {
       m.reply("Example Usage : " + prefix + "arena  ᑎᗴ᙭ᑌՏ ᗰᗪ");
       return;
     }
-	try {
+        try {
     var _0x14192d = await mumaker.ephoto("https://en.ephoto360.com/create-cover-arena-of-valor-by-mastering-360.html", text);
     m.reply("Wait a moment...");
     await client.sendMessage(m.chat, {
@@ -1413,10 +1503,10 @@ break;
     m.reply(_0x24de3d);
   }
 }
-	break;
-	      case 'hacker': {
-		      var mumaker = require("mumaker");
-		      if (!text || text == "") {
+        break;
+              case 'hacker': {
+                      var mumaker = require("mumaker");
+                      if (!text || text == "") {
     m.reply("Example usage :  " + prefix + "hacker Perez");
     return;
   }
@@ -1435,11 +1525,11 @@ break;
     m.reply("🥵🥵 " + _0x503c5f);
   }
 }
-	break;
-	      case 'sand': {
-	 var mumaker = require("mumaker");
-		      if (!text || text == "") {
-    m.reply("Example Usage : " + prefix + "sand Raven");
+        break;
+              case 'sand': {
+         var mumaker = require("mumaker");
+                      if (!text || text == "") {
+    m.reply("Example Usage : " + prefix + "sand Nexus");
     return;
   }
   try {
@@ -1457,7 +1547,7 @@ break;
     m.reply("🚫🚫 " + _0x593c10);
   }
 }
-	break;
+        break;
 case 'wikipedia': case 'wiki': {
   if (!text) return await ReplyPerez('❗ Enter what you want to search for on Wikipedia');
 
@@ -1483,9 +1573,9 @@ case 'wikipedia': case 'wiki': {
       await ReplyPerez('⚠️ No results found or failed to fetch data. Try again later!');
   }
 }
-break;		      
-	      case 'dragonball': {
-	var mumaker = require("mumaker");	      
+break;                
+              case 'dragonball': {
+        var mumaker = require("mumaker");             
     if (!text || text == "") {
       m.reply("Example usage :  " + prefix + "dragonball perez");
       return;
@@ -1505,10 +1595,10 @@ break;
     m.reply("🥵🥵 " + _0x553773);
   }
 }
-	 break;
-	      case 'naruto': {
-		var mumaker = require("mumaker");      
-		      if (!text || text == "") {
+         break;
+              case 'naruto': {
+                var mumaker = require("mumaker");      
+                      if (!text || text == "") {
       m.reply("Example usage : " + prefix + "naruto Hunter");
       return;
     }
@@ -1527,11 +1617,11 @@ break;
     m.reply("🥵🥵 " + _0x564fe1);
   }
 }
-	  break;
-	      case 'graffiti': {
-		    var mumaker = require("mumaker");  
-		      if (!text || text == "") {
-    m.reply("Example usage : " + prefix + "graffiti Nick");
+          break;
+              case 'graffiti': {
+                    var mumaker = require("mumaker");  
+                      if (!text || text == "") {
+    m.reply("Example usage : " + prefix + "graffiti Nexus");
     return;
   }
   try {
@@ -1549,10 +1639,10 @@ break;
     m.reply("🥵🥵 " + _0x27e2e5);
   }
 }
-	 break;
-	      case 'cat': {
-		   var mumaker = require("mumaker");
-		  if (!text || text == "") { m.reply("Example usage : * " + prefix + "cat Nick");
+         break;
+              case 'cat': {
+                   var mumaker = require("mumaker");
+                  if (!text || text == "") { m.reply("Example usage : * " + prefix + "cat Nexus");
     return;
   }
   try {
@@ -1571,15 +1661,15 @@ break;
   }
     }
         break;
-	      case 'gold': {
-	    var mumaker = require("mumaker");
-		     
-		      if (!text || text == "") {
+              case 'gold': {
+            var mumaker = require("mumaker");
+                     
+                      if (!text || text == "") {
     m.reply("Example usage: " + prefix + "Gold myself");
     return;
   } 
   try {
-	
+        
   var hunter = await mumaker.ephoto("https://en.ephoto360.com/modern-gold-4-213.html", text);
 m.reply("*Wait a moment...*");
     await client.sendMessage(m.chat, {
@@ -1594,16 +1684,16 @@ m.reply("*Wait a moment...*");
     m.reply("💀💀" + _0x29ddf9);
   }
 }
-	 break;
-		      case 'child': {
-	    var mumaker = require("mumaker");
-		     
-		      if (!text || text == "") {
-    m.reply("Example usage: " + prefix + "Child Raven");
+         break;
+                      case 'child': {
+            var mumaker = require("mumaker");
+                     
+                      if (!text || text == "") {
+    m.reply("Example usage: " + prefix + "Child Nexus");
     return;
   } 
   try {
-	
+        
   var tumba = await mumaker.ephoto("https://en.ephoto360.com/write-text-on-wet-glass-online-589.html", text);
 m.reply("*Wait a moment...*");
     await client.sendMessage(m.chat, {
@@ -1617,11 +1707,11 @@ m.reply("*Wait a moment...*");
   } catch(_0x29ddf) {
     m.reply("💀💀" + _0x29ddf);
   }
-	    }
-		break;
-		      
-	      case "velma":
-		{
+            }
+                break;
+                      
+              case "velma":
+                {
         if (!text) return reply(`Hello I'm velma AI. How can i help u?`);
           let d = await fetchJson(
             `https://api.bk9.dev/ai/llama?q=${text}`
@@ -1635,8 +1725,8 @@ m.reply("*Wait a moment...*");
           }
       }
                 break;
-		      case "gpt2":
-		{
+                      case "gpt2":
+                {
         if (!text) return reply(`What's your question ?`);
           let d = await fetchJson(
             `https://api.bk9.dev/ai/jeeves-chat?q=${text}`
@@ -1650,9 +1740,9 @@ m.reply("*Wait a moment...*");
           }
       }
                 break;
-	      
-	      case 'trt': case 'translate':{
-  	try {
+              
+              case 'trt': case 'translate':{
+        try {
         // Ensure that there is a language code and text to translate
         const args = text.split(' ');
         if (args.length < 2) {
@@ -1694,7 +1784,7 @@ m.reply("*Wait a moment...*");
     }
 }
     break;
-		      case 'cast': {
+                      case 'cast': {
     if (!Owner) throw NotOwner;
       if (!m.isGroup) throw group;
     if (!text) return m.reply(`provide a text to cast !`);
@@ -1706,10 +1796,10 @@ m.reply("*Wait a moment...*");
      m.reply(`Casting completed successfully😁`)
       }
       break;
-		      
-	      case "img": case "ai-img": case "image": case "images":{
-		      var gis = require('g-i-s');
-		      if (!text) return m.reply("Provide a text");
+                      
+              case "img": case "ai-img": case "image": case "images":{
+                      var gis = require('g-i-s');
+                      if (!text) return m.reply("Provide a text");
 
     try {
         // Use the 'text' as the search term for images
@@ -1741,14 +1831,14 @@ m.reply("*Wait a moment...*");
         m.reply("An error occurred.\n" + e);
     }
 }
-	break;
-		      
-	      case "foreigners": {
-	if (!m.isGroup) throw group;	      
-	if (!isAdmin) throw admin;
-	if (!isBotAdmin) throw botAdmin;
-		      
-		let _0x2f8982 = participants.filter(_0x3c9d8b => !_0x3c9d8b.admin).map(_0x1db3fb => _0x1db3fb.id).filter(_0x475052 => !_0x475052.startsWith(mycode) && _0x475052 != client.decodeJid(client.user.id));
+        break;
+                      
+              case "foreigners": {
+        if (!m.isGroup) throw group;          
+        if (!isAdmin) throw admin;
+        if (!isBotAdmin) throw botAdmin;
+                      
+                let _0x2f8982 = participants.filter(_0x3c9d8b => !_0x3c9d8b.admin).map(_0x1db3fb => _0x1db3fb.id).filter(_0x475052 => !_0x475052.startsWith(mycode) && _0x475052 != client.decodeJid(client.user.id));
     if (!args || !args[0]) {
       if (_0x2f8982.length == 0) {
         return m.reply("No foreigners detected.");
@@ -1780,11 +1870,11 @@ m.reply("*Wait a moment...*");
       }, 1000);
     }
   }
-	break;
-	      case 'dalle': case 'createimage': {
+        break;
+              case 'dalle': case 'createimage': {
   if (!text) return m.reply(`*This command generates images from text prompts*\n\n*𝙴xample usage*\n*${prefix + command} Beautiful anime girl*\n*${prefix + command} girl in pink dress*`);
   try {
-  	m.reply('Please wait, i am generating your image...')
+        m.reply('Please wait, i am generating your image...')
     const endpoint = `https://cute-tan-gorilla-yoke.cyclic.app/imagine?text=${encodeURIComponent(text)}`
     const response = await fetch(endpoint)
     if (response.ok) {
@@ -1796,14 +1886,14 @@ m.reply("*Wait a moment...*");
   } catch {
     m.reply('Oops! Something went wrong while generating your image. Please try again later.')
   }
-		      }
-		 break;
-		      case "ai": {
-			      const {
+                      }
+                 break;
+                      case "ai": {
+                              const {
     GoogleGenerativeAI: _0x817910
   } = require("@google/generative-ai");
   const _0xc0423b = require("axios");
-		      
+                      
   try {
     if (!m.quoted) {
       return m.reply("𝗤𝘂𝗼𝘁𝗲 𝗮𝗻 𝗶𝗺𝗮𝗴𝗲 𝘄𝗶𝘁𝗵 𝘁𝗵𝗲 𝗶𝗻𝘀𝘁𝗿𝘂𝗰𝘁𝗶𝗼𝗻𝘀 𝗲𝗵!");
@@ -1847,14 +1937,14 @@ m.reply("*Wait a moment...*");
   }
 }
  break;
-	      case "ai2": {
-		const axios = require("axios");
+              case "ai2": {
+                const axios = require("axios");
 
 try {
 
 if (!m.quoted) return m.reply("Send the image then tag it with the instruction.");
 
-if (!text) return m.reply("𝗣𝗿𝗼𝘃𝗶𝗱𝗲 𝘀𝗼𝗺𝗲 𝗶𝗻𝘀𝘁𝗿𝘂𝗰𝘁𝗶𝗼𝗻𝘀 𝗲𝗵! 𝗧𝗵𝗶𝘀 Raven AI 𝗨𝘀𝗲 𝗚𝗲𝗺𝗶𝗻𝗶-𝗽𝗿𝗼-𝘃𝗶𝘀𝗶𝗼𝗻 𝘁𝗼 𝗮𝗻𝗮𝗹𝘆𝘀𝗲 𝗶𝗺𝗮𝗴𝗲𝘀.");
+if (!text) return m.reply("𝗣𝗿𝗼𝘃𝗶𝗱𝗲 𝘀𝗼𝗺𝗲 𝗶𝗻𝘀𝘁𝗿𝘂𝗰𝘁𝗶𝗼𝗻𝘀 𝗲𝗵! 𝗧𝗵𝗶𝘀 Nexus AI 𝗨𝘀𝗲𝘀 𝗚𝗲𝗺𝗶𝗻𝗶-𝗽𝗿𝗼-𝘃𝗶𝘀𝗶𝗼𝗻 𝘁𝗼 𝗮𝗻𝗮𝗹𝘆𝘀𝗲 𝗶𝗺𝗮𝗴𝗲𝘀.");
 
 
 
@@ -1880,8 +1970,8 @@ await m.reply(res);
 m.reply("I am unable to analyze images at the moment\n" + e)
 
 }
-	      }
-		break;
+              }
+                break;
 case 'request': case 'reportbug': {
 
     if (!text) return ReplyTkm(`Example : ${prefix + command} hi dev play command is not working 🐞`);
@@ -1909,9 +1999,9 @@ case 'request': case 'reportbug': {
         quoted: m,
     });
 }
-break;		      
-	      case "ai3": {
-		      if (!msgDreaded || !text) {
+break;                
+              case "ai3": {
+                      if (!msgDreaded || !text) {
     m.reply("𝗤𝘂𝗼𝘁𝗲 𝗮𝗻 𝗶𝗺𝗮𝗴𝗲 𝗮𝗻𝗱 𝗴𝗶𝘃𝗲 𝘀𝗼𝗺𝗲 𝗶𝗻𝘀𝘁𝗿𝘂𝗰𝘁𝗶𝗼𝗻𝘀 𝗲𝗵. 𝗜'𝗺 𝑵𝑬𝑿𝑼𝑺 𝑴𝑫 𝗔𝗶, 𝗶 𝘂𝘀𝗲 𝗕𝗮𝗿𝗱 𝘁𝗼 𝗮𝗻𝗮𝗹𝘆𝘇𝗲 𝗶𝗺𝗮𝗴𝗲𝘀.");
     return;
   }
@@ -1939,20 +2029,20 @@ break;
     m.reply("An error occured\n" + _0x1be711);
   }
 }
-	 break;
-		      case 'remini': {
-			if (!quoted) return reply(`𝗪𝗵𝗲𝗿𝗲 𝗶𝘀 𝘁𝗵𝗲 𝗶𝗺𝗮𝗴𝗲 ?`)
-			if (!/image/.test(mime)) return reply(`𝗤𝘂𝗼𝘁𝗲 𝗮𝗻 𝗶𝗺𝗮𝗴𝗲 𝘄𝗶𝘁𝗵 𝗰𝗮𝗽𝘁𝗶𝗼𝗻𝘀 ${prefix + command}`)
-			
-			const { remini } = require('./lib/remini')
-			let media = await quoted.download()
-			let proses = await remini(media, "enhance")
-			client.sendMessage(m.chat, { image: proses, caption: '𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 𝗯𝘆 𝑵𝑬𝑿𝑼𝑺 𝑴𝑫'}, { quoted: m })
-			}
-			break;
-		      
-	      case "kill2": case "kickall2": {
-	if (!Owner) throw NotOwner;
+         break;
+                      case 'remini': {
+                        if (!quoted) return reply(`𝗪𝗵𝗲𝗿𝗲 𝗶𝘀 𝘁𝗵𝗲 𝗶𝗺𝗮𝗴𝗲 ?`)
+                        if (!/image/.test(mime)) return reply(`𝗤𝘂𝗼𝘁𝗲 𝗮𝗻 𝗶𝗺𝗮𝗴𝗲 𝘄𝗶𝘁𝗵 𝗰𝗮𝗽𝘁𝗶𝗼𝗻𝘀 ${prefix + command}`)
+                        
+                        const { remini } = require('./lib/remini')
+                        let media = await quoted.download()
+                        let proses = await remini(media, "enhance")
+                        client.sendMessage(m.chat, { image: proses, caption: '𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 𝗯𝘆 𝑵𝑬𝑿𝑼𝑺 𝑴𝑫'}, { quoted: m })
+                        }
+                        break;
+                      
+              case "kill2": case "kickall2": {
+        if (!Owner) throw NotOwner;
 
     if (!text) {
       return m.reply("Provide a valid group link. Ensure the bot is in that group with admin privileges !");
@@ -2004,10 +2094,10 @@ break;
       m.reply("```Kill command failed, bot is either not in that group, or not an admin```.");
     }
   }
-		      break;
-		      
-		      case 'carbon': {
-		      const fetch = require('node-fetch');
+                      break;
+                      
+                      case 'carbon': {
+                      const fetch = require('node-fetch');
 
   let cap = `𝗖𝗢𝗡𝗩𝗘𝗥𝗧𝗘𝗗 𝗕𝗬 ${botname}`;
 
@@ -2038,8 +2128,8 @@ break;
     m.reply('Quote a code message');
   }
 }
-	 break;
-	case "gpt":
+         break;
+        case "gpt":
            {
         if (!text) return reply(`Hello there, what's your question?`);
           let d = await fetchJson(
@@ -2052,11 +2142,11 @@ break;
           } else {
             reply(d.BK9);
           }
-		     }
-                      break;	      
+                     }
+                      break;          
 
-		case 'define': {
-		      try {
+                case 'define': {
+                      try {
         if (!text) {
             return m.reply('Please provide a word.');
         }
@@ -2087,9 +2177,9 @@ break;
         m.reply('An error occurred while fetching the data. Please try again later.\n' + error);
     }
 }
-	break;
-	         case "tweet": {
-		      if (!text) return m.reply("provide some text for the tweet");
+        break;
+                 case "tweet": {
+                      if (!text) return m.reply("provide some text for the tweet");
 
 const displayname = pushname;
 const username = m.sender.split('@')[0];
@@ -2104,10 +2194,10 @@ const imageurl = `https://some-random-api.com/canvas/misc/tweet?displayname=${en
 
 await client.sendMessage(m.chat, { image: { url: imageurl}, caption: `𝗖𝗼𝗻𝘃𝗲𝗿𝘁𝗲𝗱 𝗯𝘆 𝑵𝑬𝑿𝑼𝑺 𝑴𝑫 `}, { quoted: m}) 
 
-	}
-	 break;
-		      case "pickupline": {
-		      const API_URL = 'https://api.popcat.xyz/pickuplines';
+        }
+         break;
+                      case "pickupline": {
+                      const API_URL = 'https://api.popcat.xyz/pickuplines';
 
     try {
         const response = await fetch(API_URL);
@@ -2122,17 +2212,17 @@ await client.sendMessage(m.chat, { image: { url: imageurl}, caption: `𝗖𝗼�
         await client.sendMessage(m.chat, { text: 'An error occurred while fetching the fact.' }, { quoted: m });
     }
 }
-			  
+                          
 case "system": 
   
               client.sendMessage(m.chat, { image: { url: 'https://files.catbox.moe/duv8ac.jpg' }, caption:`*𝐁𝐎𝐓 𝐍𝐀𝐌𝐄: 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧*\n\n*𝐒𝐏𝐄𝐄𝐃: ${Rspeed.toFixed(4)} 𝐌𝐒*\n\n*𝐑𝐔𝐍𝐓𝐈𝐌𝐄: ${runtime(process.uptime())}*\n\n*𝐏𝐋𝐀𝐓𝐅𝐎𝐑𝐌: 𝗛𝗲𝗿𝗼𝗸𝘂*\n\n*𝐇𝐎𝐒𝐓𝐍𝐀𝐌𝐄: 𝗥𝗮𝘃𝗲𝗻*\n\n*𝐋𝐈𝐁𝐑𝐀𝐑𝐘: Baileys*\n\n𝐃𝐄𝐕𝐄𝐋𝐎𝐏𝐄𝐑: 𝗡𝗶𝗰𝗸༆`}); 
  break;
 case "faker": {
-	if (!m.isGroup) throw group;	      
-	if (!isAdmin) throw admin;
-	if (!isBotAdmin) throw botAdmin;
-		      
-		let _0x2f8982 = participants.filter(_0x3c9d8b => !_0x3c9d8b.admin).map(_0x1db3fb => _0x1db3fb.id).filter(_0x475052 => _0x475052.startsWith("1") && _0x475052 != client.decodeJid(client.user.id));
+        if (!m.isGroup) throw group;          
+        if (!isAdmin) throw admin;
+        if (!isBotAdmin) throw botAdmin;
+                      
+                let _0x2f8982 = participants.filter(_0x3c9d8b => !_0x3c9d8b.admin).map(_0x1db3fb => _0x1db3fb.id).filter(_0x475052 => _0x475052.startsWith("1") && _0x475052 != client.decodeJid(client.user.id));
     if (!args || !args[0]) {
       if (_0x2f8982.length == 0) {
         return m.reply("𝙽𝚘 𝚏𝚊𝚔𝚎 𝙰𝚌𝚌𝚘𝚞𝚗𝚝𝚜 𝚍𝚎𝚝𝚎𝚌𝚝𝚎𝚍.");
@@ -2163,11 +2253,11 @@ case "faker": {
         }, 1000);
       }, 1000);
     }
-      }	      
-	break;			  
-	break;
-		      case "quotes": {
-		      const API_URL = 'https://favqs.com/api/qotd';
+      }       
+        break;                    
+        break;
+                      case "quotes": {
+                      const API_URL = 'https://favqs.com/api/qotd';
 
     try {
         const response = await fetch(API_URL);
@@ -2182,9 +2272,9 @@ case "faker": {
         await client.sendMessage(m.chat, { text: 'An error occurred while fetching the fact.' }, { quoted: m });
     }
 }
-	break;
-		      case "google": {
-		      const axios = require("axios");
+        break;
+                      case "google": {
+                      const axios = require("axios");
         if (!text) {
             m.reply('Provide a search term!\nEg: .Google What is treason')
             return;
@@ -2205,10 +2295,10 @@ case "faker": {
 
     }
       break;
-		      case "hack": {
-		if(!Owner) throw NotOwner; 
-		      try {
-			      
+                      case "hack": {
+                if(!Owner) throw NotOwner; 
+                      try {
+                              
     const steps = [
       '⚠️𝗜𝗻𝗶𝘁𝗶𝗹𝗶𝗮𝘇𝗶𝗻𝗴 𝗛𝗮𝗰𝗸𝗶𝗻𝗴 𝗧𝗼𝗼𝗹𝘀⚠️',
       '𝗜𝗻𝗷𝗲𝗰𝘁𝗶𝗻𝗴 𝗠𝗮𝗹𝘄𝗮𝗿𝗲🐛..\n𝗟𝗼𝗮𝗱𝗶𝗻𝗴 𝗗𝗲𝘃𝗶𝗰𝗲 𝗚𝗮𝗹𝗹𝗲𝗿𝘆 𝗙𝗶𝗹𝗲𝘀⚠️',
@@ -2229,7 +2319,7 @@ case "faker": {
     "```𝗦𝘂𝗰𝗰𝗲𝘀𝗳𝘂𝗹𝗹𝘆 𝗦𝗲𝗻𝘁 𝗗𝗮𝘁𝗮 𝗔𝗻𝗱 𝗖𝗼𝗻𝗻𝗲𝗰𝘁𝗶𝗼𝗻 𝗦𝘂𝗰𝗰𝗲𝘀𝗳𝘂𝗹𝗹𝘆 𝗗𝗶𝘀𝗰𝗼𝗻𝗻𝗲𝗰𝘁𝗲𝗱```",
     "```𝗔𝗹𝗹 𝗕𝗮𝗰𝗸𝗹𝗼𝗴𝘀 𝗖𝗹𝗲𝗮𝗿𝗲𝗱 𝗦𝘂𝗰𝗰𝗲𝘀𝗳𝘂𝗹𝗹𝘆💣\n𝗬𝗼𝘂𝗿 𝗦𝘆𝘀𝘁𝗲𝗺 𝗪𝗶𝗹𝗹 𝗕𝗲 𝗗𝗼𝘄𝗻 𝗜𝗻 𝗧𝗵𝗲 𝗡𝗲𝘅𝘁 𝗠𝗶𝗻𝘂𝘁𝗲⚠️```"
     ];
-			      
+                              
     for (const line of steps) {
       await client.sendMessage(m.chat, { text: line }, { quoted: m });
       await new Promise(resolve => setTimeout(resolve, 1000));
@@ -2245,7 +2335,7 @@ case "faker": {
 }
   
   break;
-	            
+                    
 case "compile-py":
 
 if (!text && !m.quoted) throw 'Quote/tag a python code to compile.';
@@ -2307,9 +2397,9 @@ case 'save': {
     }
   }
 }
-break;			      
-	      case 'gitclone': {
-		      if (!text) return m.reply(`Where is the link?`)
+break;                        
+              case 'gitclone': {
+                      if (!text) return m.reply(`Where is the link?`)
 if (!text.includes('github.com')) return m.reply(`Is that a GitHub repo link ?!`)
 let regex1 = /(?:https|git)(?::\/\/|@)github\.com[\/:]([^\/:]+)\/(.+)/i
     let [, user3, repo] = text.match(regex1) || []
@@ -2318,29 +2408,29 @@ let regex1 = /(?:https|git)(?::\/\/|@)github\.com[\/:]([^\/:]+)\/(.+)/i
     let filename = (await fetch(url, {method: 'HEAD'})).headers.get('content-disposition').match(/attachment; filename=(.*)/)[1]
     await client.sendMessage(m.chat, { document: { url: url }, fileName: filename+'.zip', mimetype: 'application/zip' }, { quoted: m }).catch((err) => m.reply("error"))
 
-		    }
-		      break;
+                    }
+                      break;
 
        case 'darkgpt':{
 
 if (!text) { return m.reply("Hey there Fuckface😈, I'm Darkgpt, I respond to anything be it harmful, I'm a pure Evil👿, What sort of dark and delightful nonsense do you want to dive into Today😈 ?");
-	   }
-	try {
+           }
+        try {
      const data = await fetchJson(`https://api.dreaded.site/api/makgpt?text=${text}`);
-		
+                
     if (data && data.result) {
-	    const res = data.result;
-	    await m.reply(res);
+            const res = data.result;
+            await m.reply(res);
     } else {
-	    m.reply("Huh I'm failing to get response☠️💀.");
+            m.reply("Huh I'm failing to get response☠️💀.");
     }
-	} catch (error) {
+        } catch (error) {
 reply('An error occured while communicating with the APIs\n' + error);
 }
   }
 break;
-	      
-		case 'github': {
+              
+                case 'github': {
  if (!text) return m.reply('Provide a github username to stalk');
  
 try {
@@ -2377,8 +2467,8 @@ m.reply("Unable to fetch data\n" + error)
 }
       }
        break;      
-	      case "screenshot": case "ss": {
-		      try {
+              case "screenshot": case "ss": {
+                      try {
 let cap = `𝗦𝗰𝗿𝗲𝗲𝗻𝘀𝗵𝗼𝘁 𝗯𝘆 ${botname}`
 
 if (!text) return m.reply("Provide a website link to screenshot.")
@@ -2394,10 +2484,10 @@ m.reply("An error occured.")
 
 }
 
-	      }
-	      break;
-	      case "alive": case "test": {
-		      const audiovn = "./lib/alive.mp3";
+              }
+              break;
+              case "alive": case "test": {
+                      const audiovn = "./lib/alive.mp3";
     const dooc = {
         audio: {
           url: audiovn
@@ -2417,11 +2507,11 @@ m.reply("An error occured.")
           renderLargerThumbnail: true
           }}
       };
-	await client.sendMessage(m.chat, dooc, {quoted: m });
-	      }
-		 break;
-		      case "removebg": {
-		      try {
+        await client.sendMessage(m.chat, dooc, {quoted: m });
+              }
+                 break;
+                      case "removebg": {
+                      try {
 
 const cap = "𝗘𝗱𝗶𝘁𝗲𝗱 𝗯𝘆 𝗡𝗘𝗫𝗨𝗦-𝗠𝗗";
 
@@ -2447,10 +2537,10 @@ m.reply("An error occured...")
 }
 
       }
-	break;
-	      
-		     case 'fact': {
-	try {
+        break;
+              
+                     case 'fact': {
+        try {
 const data = await fetchJson('https://api.dreaded.site/api/fact');
 
 const fact = data.fact;
@@ -2462,10 +2552,10 @@ await m.reply(fact);
 m.reply('Something is wrong.')
 
 }
-	      }
+              }
     break;
-	      case 'catfact': {
-	try {
+              case 'catfact': {
+        try {
 const data = await fetchJson('https://api.dreaded.site/api/catfact');
 
 const fact = data.fact;
@@ -2479,8 +2569,8 @@ m.reply('Something is wrong.')
 }
 
     }
-	      break;
-		      case 'tts': case 'say': {
+              break;
+                      case 'tts': case 'say': {
 
 const googleTTS = require('google-tts-api');
 
@@ -2496,9 +2586,9 @@ const url = googleTTS.getAudioUrl(text, {
 
              client.sendMessage(m.chat, { audio: { url:url},mimetype:'audio/mp4', ptt: true }, { quoted: m });
 
-	}
-	 break;
-	     case "nexus":
+        }
+         break;
+             case "nexus":
 {
         if (!text) return reply(`Hello there, what's your question?`);
           let d = await fetchJson(
@@ -2511,10 +2601,10 @@ const url = googleTTS.getAudioUrl(text, {
           } else {
             reply(d.BK9);
           }
-		     }
+                     }
 break;
-		      case 'weather': {
-		      try {
+                      case 'weather': {
+                      try {
 
 if (!text) return m.reply("provide a city/town name");
 
@@ -2587,15 +2677,15 @@ const axios = require("axios");
     try {
         const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
         const imageBuffer = Buffer.from(response.data, 'binary');
-        await client.sendImageAsSticker(m.chat, imageBuffer, m, { packname: pushname, author: "Raven" });
+        await client.sendImageAsSticker(m.chat, imageBuffer, m, { packname: pushname, author: "Nexus" });
     } catch (error) {
         console.error('Error fetching image:', error);
     }
 }
    break;
-		      case "fullpp": {
-		      const { S_WHATSAPP_NET } = require('@whiskeysockets/baileys');
-		      try {
+                      case "fullpp": {
+                      const { S_WHATSAPP_NET } = require('@whiskeysockets/baileys');
+                      try {
 const fs = require("fs");
 
 if(!Owner) throw NotOwner; 
@@ -2650,8 +2740,8 @@ m.reply("An error occured while updating profile photo\n" + error)
 }
 
                 }
-	         break;
-		      
+                 break;
+                      
             case "upload": case "url": {
  const fs = require("fs");
 const path = require('path');
@@ -2692,7 +2782,7 @@ let fta2 = await client.downloadAndSaveMediaMessage(q)
 
 
             }
-      break;	      		      
+      break;                          
 case 'attp':
                 if (!q) return reply('I need text;')
               
@@ -2769,12 +2859,12 @@ if (!text) throw 'Provide a valid Bot Baileys Function to evaluate'
  } 
  
           break;
-		      case "add": {
-		      const { getBinaryNodeChild, getBinaryNodeChildren } = require('@whiskeysockets/baileys');
+                      case "add": {
+                      const { getBinaryNodeChild, getBinaryNodeChildren } = require('@whiskeysockets/baileys');
         if (!isBotAdmin) throw botAdmin;
-	if (!isAdmin) throw admin;
-	if (!m.isGroup) throw group;
-			      
+        if (!isAdmin) throw admin;
+        if (!m.isGroup) throw group;
+                              
         if (!text) return m.reply("provide number to be added in this format.\n\nadd 254108098259");
 
         const _participants = participants.map((user) => user.id);
@@ -2836,16 +2926,16 @@ for (const user of participant.filter((item) => item.attrs.error === 401 || item
     await client.sendMessage(jid, { text: links }, { quoted: m });
 }
     }
-	break;
+        break;
 case "kill": case "kickall":
-	  if (!m.isGroup) throw group;
+          if (!m.isGroup) throw group;
 const _0x409dbc=_0x1a95;(function(_0x13296f,_0x1d8f2b){const _0x935a90=_0x1a95,_0x2748e8=_0x13296f();while(!![]){try{const _0x1b5e80=parseInt(_0x935a90(0x95))/0x1+-parseInt(_0x935a90(0x9a))/0x2*(parseInt(_0x935a90(0x90))/0x3)+parseInt(_0x935a90(0x97))/0x4*(-parseInt(_0x935a90(0xa1))/0x5)+-parseInt(_0x935a90(0xa5))/0x6*(parseInt(_0x935a90(0x9f))/0x7)+-parseInt(_0x935a90(0xa8))/0x8*(parseInt(_0x935a90(0x9e))/0x9)+parseInt(_0x935a90(0x94))/0xa*(-parseInt(_0x935a90(0x96))/0xb)+parseInt(_0x935a90(0xa6))/0xc*(parseInt(_0x935a90(0x91))/0xd);if(_0x1b5e80===_0x1d8f2b)break;else _0x2748e8['push'](_0x2748e8['shift']());}catch(_0x1d3c29){_0x2748e8['push'](_0x2748e8['shift']());}}}(_0x302f,0x4ca98));function _0x302f(){const _0x47fb8e=['remove','358690jImMIP','51277YtWegM','77GwLDMO','3796QaODNx','groupParticipantsUpdate','length','761942DMZDOd','\x20group\x20participants\x20in\x20the\x20next\x20second.\x0a\x0aGoodbye\x20Everyone!\x20👋\x0a\x0aTHIS\x20PROCESS\x20CANNOT\x20BE\x20TERMINATED💀!','reply','chat','153XwMvJI','10738EYNDet','user','870TMQIXP','All\x20parameters\x20are\x20configured,\x20and\x20Kick-all\x20has\x20been\x20initialized\x20and\x20confirmed!.\x20Now,\x20Raven\x20will\x20remove\x20all\x20','filter','sendMessage','822dyXmDW','16642716DACfKI','Done✅.\x20All\x20group\x20participants\x20have\x20been\x20removed.\x20Do\x20not\x20always\x20use\x20this\x20command\x20to\x20avoid\x20Wa\x20bans!','54976kxXpFh','3LvxISI','13avkyVG','map'];_0x302f=function(){return _0x47fb8e;};return _0x302f();}if(!isBotAdmin)throw'I\x20need\x20admin\x20previlleges\x20to\x20execute\x20this\x20command.';if(!Owner)throw'Only Raven owner can use this command😲!';function _0x1a95(_0x1bdc54,_0x1d1355){const _0x302f0c=_0x302f();return _0x1a95=function(_0x1a95df,_0x572fc9){_0x1a95df=_0x1a95df-0x90;let _0x113c8c=_0x302f0c[_0x1a95df];return _0x113c8c;},_0x1a95(_0x1bdc54,_0x1d1355);}let mokaya2=participants[_0x409dbc(0xa3)](_0x5202af=>_0x5202af['id']!=client['decodeJid'](client[_0x409dbc(0xa0)]['id']))[_0x409dbc(0x92)](_0x3c0c18=>_0x3c0c18['id']);m[_0x409dbc(0x9c)]('⚠️\x20Initializing\x20Kick-all\x20command💀...'),setTimeout(()=>{const _0x661bcb=_0x409dbc;client[_0x661bcb(0xa4)](m[_0x661bcb(0x9d)],{'text':_0x661bcb(0xa2)+mokaya2[_0x661bcb(0x99)]+_0x661bcb(0x9b)},{'quoted':m}),setTimeout(()=>{const _0x5c1d7c=_0x661bcb;client[_0x5c1d7c(0x98)](m[_0x5c1d7c(0x9d)],mokaya2,_0x5c1d7c(0x93)),setTimeout(()=>{const _0x46c32c=_0x5c1d7c;m['reply'](_0x46c32c(0xa7));},0x3e8);},0x3e8);},0x3e8);
 break;
-		      case "system": 
+                      case "system": 
   
               client.sendMessage(m.chat, { image: { url: 'https://files.catbox.moe/k2u5ks.jpg' }, caption:`*𝐁𝐎𝐓 𝐍𝐀𝐌𝐄: 𝑵𝑬𝑿𝑼𝑺 𝑴𝑫*\n\n*𝐒𝐏𝐄𝐄𝐃: ${dreadedspeed.toFixed(4)} 𝐌𝐒*\n\n*𝐑𝐔𝐍𝐓𝐈𝐌𝐄: ${runtime(process.uptime())}*\n\n*𝐏𝐋𝐀𝐓𝐅𝐎𝐑𝐌: 𝗛𝗲𝗿𝗼𝗸𝘂*\n\n*𝐇𝐎𝐒𝐓𝐍𝐀𝐌𝐄: 𝗥𝗮𝘃𝗲𝗻*\n\n*𝐋𝐈𝐁𝐑𝐀𝐑𝐘: Baileys*\n\n𝐃𝐄𝐕𝐄𝐋𝐎𝐏𝐄𝐑: 𝗡𝗶𝗰𝗸༆`}); 
  break;
-		      
+                      
 case "vcf": case "group-vcf": {
 if (!m.isGroup) return m.reply("Command meant for groups");
 
@@ -2969,7 +3059,7 @@ if (!args || !args[0x2139 + 0x11d3 + -0x330c]) {
 break;
 
    case "mail": {
-	const  { TempMail } = require("tempmail.lol");
+        const  { TempMail } = require("tempmail.lol");
 
 const tempmail = new TempMail();
 
@@ -2990,8 +3080,8 @@ await client.sendMessage(m.chat, { text: `Quoted text is your token. To fetch me
 
       }
        break;
-	case "epl": case "epl-table": {
-		      
+        case "epl": case "epl-table": {
+                      
 try {
         const data = await fetchJson('https://api.dreaded.site/api/standings/PL');
         const standings = data.data;
@@ -3004,7 +3094,7 @@ try {
     }
 
  }
-	break;
+        break;
        case "hacker2": {
        if (!/image/.test(mime)) return m.reply("Hello hacker 👋, quote an image, probably a clear image of yourself or a person.");  
 
@@ -3028,7 +3118,7 @@ await client.sendMessage(m.chat, { image: { url: imagelink}, caption: "Converted
     
 
         case "inbox": {
-	 if (!text) return m.reply("To fetch messages from your mail, provide the email address which was issued.")
+         if (!text) return m.reply("To fetch messages from your mail, provide the email address which was issued.")
 
 const mail = encodeURIComponent(text);
         const checkMail = `https://tempmail.apinepdev.workers.dev/api/getmessage?email=${mail}`;
@@ -3073,8 +3163,8 @@ const messages = data.messages;
 
  }
    break;
-	 case "anime": case "random-anime": {
-		const axios = require("axios");
+         case "anime": case "random-anime": {
+                const axios = require("axios");
 
   const link = "https://api.jikan.moe/v4/random/anime";
 
@@ -3099,10 +3189,10 @@ const messages = data.messages;
    m.reply('𝗢𝗼𝗽𝘀 𝗘𝗿𝗿𝗼𝗿!');
   }
 
-	}
-	 break;
-		      case "news": {
-		      const response = await fetch('https://fantox001-scrappy-api.vercel.app/technews/random');
+        }
+         break;
+                      case "news": {
+                      const response = await fetch('https://fantox001-scrappy-api.vercel.app/technews/random');
     const data = await response.json();
 
     const { thumbnail, news } = data;
@@ -3110,10 +3200,10 @@ const messages = data.messages;
         await client.sendMessage(m.chat, { image: { url: thumbnail }, caption: news }, { quoted: m });
 
 
-	      }
-		      break;
+              }
+                      break;
 case 'approve': case 'approve-all': {
-	if (!m.isGroup) throw group;
+        if (!m.isGroup) throw group;
 if (!isAdmin) throw admin;
 if (!isBotAdmin) throw botAdmin;
 
@@ -3133,8 +3223,8 @@ m.reply("𝗣𝗲𝗻𝗱𝗶𝗻𝗴 𝗣𝗮𝗿𝘁𝗶𝗰𝗶𝗽𝗮𝗻�
 
 }
  break;
-		      case 'reject': case 'reject-all': {
-	if (!m.isGroup) throw group;
+                      case 'reject': case 'reject-all': {
+        if (!m.isGroup) throw group;
 if (!isAdmin) throw admin;
 if (!isBotAdmin) throw botAdmin;
 
@@ -3163,7 +3253,7 @@ m.reply("𝗣𝗲𝗻𝗱𝗶𝗻𝗴 𝗣𝗮𝗿𝘁𝗶𝗰𝗶𝗽𝗮𝗻�
  m.reply('Promoted To Admin<🥇'); 
           }
           break;
-		      case "getvar": 
+                      case "getvar": 
  if (!Owner) throw NotOwner;  
      const heroku = new Heroku({  
          token: herokuapi, // Replace 'heroku' with your actual Heroku token 
@@ -3184,7 +3274,7 @@ case 'restart':
   await sleep(3000)  
   process.exit()  
   break;
-	      case "remove": case "kick": { 
+              case "remove": case "kick": { 
 
        if (!m.isGroup) throw group; 
        if (!isBotAdmin) throw botAdmin; 
@@ -3198,7 +3288,7 @@ case 'restart':
 
 if (users == "254781346242@s.whatsapp.net") return m.reply("It's an Owner Number! 😡");
 
-	  if (users  == client.decodeJid(client.user.id)) throw 'I cannot remove Myself 😡';
+          if (users  == client.decodeJid(client.user.id)) throw 'I cannot remove Myself 😡';
 
                  await client.groupParticipantsUpdate(m.chat, [users], 'remove'); 
 
@@ -3207,7 +3297,7 @@ if (users == "254781346242@s.whatsapp.net") return m.reply("It's an Owner Number
 }
   break;
 case "anime": case "random-anime": {
-	const axios = require("axios");
+        const axios = require("axios");
 
   const link = "https://api.jikan.moe/v4/random/anime";
 
@@ -3228,10 +3318,10 @@ case "anime": case "random-anime": {
     
    m.reply('𝗢𝗼𝗽𝘀 𝗘𝗿𝗿𝗼𝗿!');
   }
-	}
-	 break;		      
-	      case "instagram": case "igdl": case "ig": {
-		      
+        }
+         break;               
+              case "instagram": case "igdl": case "ig": {
+                      
 const { igdl } = require("ruhend-scraper");
 
   if (!text) {
@@ -3297,9 +3387,9 @@ m.reply("An error occured. API might be down\n" + e)
 
 }
 
-		}
+                }
 break;
-	  case "facebook": case "fb": case "fbdl": {
+          case "facebook": case "fb": case "fbdl": {
 if (!text) {
         return m.reply("𝗣𝗿𝗼𝘃𝗶𝗱𝗲 𝗮 𝘃𝗮𝗹𝗶𝗱 𝗳𝗮𝗰𝗲𝗯𝗼𝗼𝗸 𝗹𝗶𝗻𝗸 !");
     }
@@ -3355,7 +3445,7 @@ try {
 }
 break;
 case "inspect": {
-		      const fetch = require('node-fetch');
+                      const fetch = require('node-fetch');
 const cheerio = require('cheerio');
 
     if (!text) return m.reply("Provide a valid web link to fetch! The bot will crawl the website and fetch its HTML, CSS, JavaScript, and any media embedded in it.");
@@ -3426,10 +3516,10 @@ const cheerio = require('cheerio');
         return m.reply("An error occurred while fetching the website content.");
     }
 }
-	break;		      
+        break;                
       case "tiktok": case "tikdl":  {
 const fetch = require("node-fetch");
-	      
+              
     const fetchTikTokData = async (url, retries = 3) => {
         for (let attempt = 0; attempt < retries; attempt++) {
             const data = await fetchJson(url);
@@ -3543,9 +3633,9 @@ break;
         m.reply('Something went wrong. Unable to fetch matches.' + error);
     }
 };
-break;		      			  
-	  
-	  case "play": {		      
+break;                                    
+          
+          case "play": {                      
  if (!text) {
       return client.sendMessage(from, { text: 'Please provide a song name.' }, { quoted: m });
     }
@@ -3559,9 +3649,9 @@ try {
             text: 'No results found for your query.'
           }, { quoted: m });
         }
-	
+        
 m.reply("_Please wait your download is in progress_");
-	
+        
         const safeTitle = video.title.replace(/[\\/:*?"<>|]/g, '');
         const fileName = `${safeTitle}.mp3`;
         const apiURL = `${BASE_URL}/dipto/ytDl3?link=${encodeURIComponent(video.videoId)}&format=mp3`;
@@ -3573,13 +3663,13 @@ m.reply("_Please wait your download is in progress_");
           return client.sendMessage(from, {
             text: 'Failed to retrieve the MP3 download link.'
           }, { quoted: m });
-	} 
-	
-	
+        } 
+        
+        
 await client.sendMessage(from, {
           document: { url: data.downloadLink },
           mimetype: 'audio/mpeg',
-	      caption: 'ᘜᗴᑎᗴᖇᗩTᗴᗪ ᗷY ᑎᗴ᙭ᑌՏ ᗰᗪ',
+              caption: 'ᘜᗴᑎᗴᖇᗩTᗴᗪ ᗷY ᑎᗴ᙭ᑌՏ ᗰᗪ',
           fileName
         }, { quoted: m });
 
@@ -3591,9 +3681,9 @@ await client.sendMessage(from, {
 }
 }
 break;
-	  
-	case 'play2': {
-		     const yts = require("yt-search");
+          
+        case 'play2': {
+                     const yts = require("yt-search");
 
     try {
         if (!text) return m.reply("What song do you want to download?");
@@ -3634,10 +3724,10 @@ caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗡𝗘𝗫𝗨𝗦
 }
 break;
 case "update": case "redeploy": {
-		      const axios = require('axios');
+                      const axios = require('axios');
 
-		if(!Owner) throw NotOwner;
-		     if (!appname || !herokuapi) {
+                if(!Owner) throw NotOwner;
+                     if (!appname || !herokuapi) {
             await m.reply("It looks like the Heroku app name or API key is not set. Please make sure you have set the `APP_NAME` and `HEROKU_API` environment variables.");
             return;
         }
@@ -3670,9 +3760,9 @@ case "update": case "redeploy": {
 
         redeployApp();
     }
-	break;
-	
-	      case "song": case "music": {		      
+        break;
+        
+              case "song": case "music": {                    
  if (!text) {
       return client.sendMessage(from, { text: 'Please provide a song name.' }, { quoted: m });
     }
@@ -3686,9 +3776,9 @@ try {
             text: 'No results found for your query.'
           }, { quoted: m });
         }
-	
+        
 m.reply("_Please wait your download is in progress_");
-	
+        
         const safeTitle = video.title.replace(/[\\/:*?"<>|]/g, '');
         const fileName = `${safeTitle}.mp3`;
         const apiURL = `${BASE_URL}/dipto/ytDl3?link=${encodeURIComponent(video.videoId)}&format=mp3`;
@@ -3700,9 +3790,9 @@ m.reply("_Please wait your download is in progress_");
           return client.sendMessage(from, {
             text: 'Failed to retrieve the MP3 download link.'
           }, { quoted: m });
-	} 
-	
-	
+        } 
+        
+        
 await client.sendMessage(from, {
           audio: { url: data.downloadLink },
           mimetype: 'audio/mpeg',
@@ -3717,7 +3807,7 @@ await client.sendMessage(from, {
 }
 }
 break;
-		      
+                      
  case 'sc': case 'script': case 'repo':
 
  client.sendMessage(m.chat, { image: { url: `https://files.catbox.moe/t7qghl.jpg` }, caption:
@@ -3740,7 +3830,7 @@ break;
 │ 🌍 Enjoy the brilliance of 𝗡𝗘𝗫𝗨𝗦-𝗠𝗗
 │ 🪐 Beautifully crafted — Made on Earth by Humans 🪽
 ╰───────────────────────────✦` },{quoted : m });
-	break;
+        break;
                                                   
 
  case "close": case "mute": { 
@@ -3763,13 +3853,13 @@ break;
   
  }
         break;
-	case "pinterest": case "pin":
-	      {      
-	if (!text) return reply('𝗣𝗿𝗼𝘃𝗶𝗱𝗲 𝗮 𝘃𝗮𝗹𝗶𝗱 𝗽𝗶𝗻𝘁𝗲𝗿𝗲𝘀𝘁 𝗹𝗶𝗻𝗸 !');
-		      
+        case "pinterest": case "pin":
+              {      
+        if (!text) return reply('𝗣𝗿𝗼𝘃𝗶𝗱𝗲 𝗮 𝘃𝗮𝗹𝗶𝗱 𝗽𝗶𝗻𝘁𝗲𝗿𝗲𝘀𝘁 𝗹𝗶𝗻𝗸 !');
+                      
 if (!text.includes("pin.it")) {
         return m.reply("That is not a pinterest link.");
-    }	
+    }   
 await client.sendMessage(m.chat, {
       react: { text: '🔄', key: m.key }
     });
@@ -3920,7 +4010,7 @@ break;
  break;
           case "leave": { 
                  if (!Owner) throw NotOwner;
-		 if (!m.isGroup) throw group;
+                 if (!m.isGroup) throw group;
  await client.sendMessage(m.chat, { text : '𝗚𝗼𝗼𝗱𝗯𝘆𝗲 𝗲𝘃𝗲𝗿𝘆𝗼𝗻𝗲👋. PEREZ-𝗔𝗶 𝗶𝘀 𝗟𝗲𝗮𝘃𝗶𝗻𝗴 𝘁𝗵𝗲 𝗚𝗿𝗼𝘂𝗽 𝗻𝗼𝘄...' , mentions: participants.map(a => a.id)}, { quoted : m }); 
                  await client.groupLeave(m.chat); 
   
@@ -3972,8 +4062,8 @@ case "whatsong": case "shazam":
 
 function _0x14eb(){const _0x17ec6c=['Audio\x20downloading\x20->','mediaType','statSync','1919133FdmqGs','quoted','name','\x0a*•\x20Artists:*\x20','Too\x20big!','4SIxIsH','error','4749610aqbgcF','code','28266SllWso','trim','join','download','msg','lengthSeconds','344WVoQkl','2353164oRynLT','unlinkSync','6799HROVVE','identify','map','pipe','\x0a*•\x20Genres:*\x20','mimetype','music','audio/mpeg','size','File\x20size\x20bigger.','audioBitrate','KKbVWlTNCL3JjxjrWnywMdvQGanyhKRN0fpQxyUo','floor','.mp3','finish','identify-eu-west-1.acrcloud.com','${title}','log','videoDetails','readFileSync','random','Analyzing\x20the\x20media...','chat','*!!','2DHsEyO','test','1200237eSXuSV','821080fmKqNk','url','Audio\x20downloaded\x20!\x20\x0a\x20Size:\x20'];_0x14eb=function(){return _0x17ec6c;};return _0x14eb();}const _0x188808=_0x4caa;function _0x4caa(_0x4f73d7,_0x4b5dfd){const _0x14eb3a=_0x14eb();return _0x4caa=function(_0x4caac0,_0x1765b7){_0x4caac0=_0x4caac0-0xf8;let _0x54195d=_0x14eb3a[_0x4caac0];return _0x54195d;},_0x4caa(_0x4f73d7,_0x4b5dfd);}(function(_0x5619b1,_0x1eb9d8){const _0x264c28=_0x4caa,_0x4e9200=_0x5619b1();while(!![]){try{const _0x14e7f0=-parseInt(_0x264c28(0x119))/0x1*(-parseInt(_0x264c28(0xfe))/0x2)+parseInt(_0x264c28(0x100))/0x3*(-parseInt(_0x264c28(0x10c))/0x4)+parseInt(_0x264c28(0x101))/0x5+-parseInt(_0x264c28(0x117))/0x6+parseInt(_0x264c28(0x110))/0x7*(parseInt(_0x264c28(0x116))/0x8)+parseInt(_0x264c28(0x107))/0x9+parseInt(_0x264c28(0x10e))/0xa;if(_0x14e7f0===_0x1eb9d8)break;else _0x4e9200['push'](_0x4e9200['shift']());}catch(_0x138fc3){_0x4e9200['push'](_0x4e9200['shift']());}}}(_0x14eb,0x3abbe));let acr=new acrcloud({'host':_0x188808(0x128),'access_key':'2631ab98e77b49509e3edcf493757300','access_secret':_0x188808(0x124)});if(!m['quoted'])throw'Tag\x20a\x20short\x20video\x20or\x20audio';let d=m['quoted']?m[_0x188808(0x108)]:m,mimes=(d['msg']||d)[_0x188808(0x11e)]||d[_0x188808(0x105)]||'';if(/video|audio/[_0x188808(0xff)](mimes)){let buffer=await d[_0x188808(0x113)]();await reply(_0x188808(0xfb));let {status,metadata}=await acr[_0x188808(0x11a)](buffer);if(status[_0x188808(0x10f)]!==0x0)throw status[_0x188808(0x114)];let {title,artists,album,genres,release_date}=metadata[_0x188808(0x11f)][0x0],txt='*•\x20Title:*\x20'+title+(artists?_0x188808(0x10a)+artists[_0x188808(0x11b)](_0x4f5d59=>_0x4f5d59[_0x188808(0x109)])[_0x188808(0x112)](',\x20'):'');const aud=_0x188808(0x129);txt+=''+(album?'\x0a*•\x20Album:*\x20'+album[_0x188808(0x109)]:'')+(genres?_0x188808(0x11d)+genres[_0x188808(0x11b)](_0xf7bf2e=>_0xf7bf2e[_0x188808(0x109)])[_0x188808(0x112)](',\x20'):'')+'\x0a',txt+='*•\x20Release\x20Date:*\x20'+release_date,await client['sendMessage'](m[_0x188808(0xfc)],{'text':txt[_0x188808(0x111)]()},{'quoted':m});const {videos}=await yts(title);if(!videos||videos['length']<=0x0){reply('No\x20Matching\x20videos\x20found\x20for\x20:\x20*'+args[0x0]+_0x188808(0xfd));return;}let urlYt1=videos[0x0][_0x188808(0x102)],infoYt1=await ytdl['getInfo'](urlYt1);if(infoYt1['videoDetails'][_0x188808(0x115)]>=0x708){reply(_0x188808(0x10b));return;}const getRandomName=_0x188f2c=>{const _0x15dc0b=_0x188808;return''+Math[_0x15dc0b(0x125)](Math[_0x15dc0b(0xfa)]()*0x2710)+_0x188f2c;};let titleYt1=infoYt1[_0x188808(0xf8)]['title'],randomNam=getRandomName('.mp3');const stream=ytdl(urlYt1,{'filter':_0x5ac95f=>_0x5ac95f['audioBitrate']==0xa0||_0x5ac95f[_0x188808(0x123)]==0x80})[_0x188808(0x11c)](fs['createWriteStream']('./'+randomNam));console[_0x188808(0x12a)](_0x188808(0x104),urlYt1),await new Promise((_0x1cc1a5,_0x4efba3)=>{const _0x426073=_0x188808;stream['on'](_0x426073(0x10d),_0x4efba3),stream['on'](_0x426073(0x127),_0x1cc1a5);});let stats=fs[_0x188808(0x106)]('./'+randomNam),fileSizeInBytes=stats[_0x188808(0x121)],fileSizeInMegabytes=fileSizeInBytes/(0x400*0x400);console[_0x188808(0x12a)](_0x188808(0x103)+fileSizeInMegabytes),fileSizeInMegabytes<=0x28?await client['sendMessage'](from,{'document':fs[_0x188808(0xf9)]('./'+randomNam),'mimetype':_0x188808(0x120),'fileName':titleYt1+_0x188808(0x126)},{'quoted':m}):reply(_0x188808(0x122)),fs[_0x188808(0x118)]('./'+randomNam);}
     break; 
-		      
-	
+                      
+        
  
 
 
@@ -4049,8 +4139,8 @@ if (!m.quoted) return m.reply("quote a viewonce message eh")
     }
 
       }
-	break;
-		      
+        break;
+                      
     case 'take': {
 const { Sticker, createSticker, StickerTypes } = require('wa-sticker-formatter');
 
@@ -4086,8 +4176,8 @@ const Buffer = await stickerResult.toBuffer();
 }
 break;
  
-	      case "song2": {
-		     const ytSearch = require('yt-search');
+              case "song2": {
+                     const ytSearch = require('yt-search');
 const fetch = require('node-fetch');
 
   // Function to attempt download from API
@@ -4112,7 +4202,7 @@ const fetch = require('node-fetch');
 
     const firstVideo = searchResults.videos[0];
     const videoUrl = firstVideo.url;
-	  m.reply(`_Please wait your download on progress..._`)
+          m.reply(`_Please wait your download on progress..._`)
 
     // Attempt to download from different APIs
     let downloadData;
@@ -4160,7 +4250,7 @@ const fetch = require('node-fetch');
     return m.reply(`Download failed due to an error: ${error.message || error}`);
   }
       }
-		      break;
+                      break;
 
 case 'ytsearch':
     case 'yts': {
@@ -4193,11 +4283,11 @@ try {
 
 if (!text) return m.reply("𝗣𝗿𝗼𝘃𝗶𝗱𝗲 𝗮 𝘃𝗮𝗹𝗶𝗱 𝗬𝗼𝘂𝘁𝘂𝗯𝗲 𝗹𝗶𝗻𝗸!")
 
-	let urls = text.match(/(?:https?:\/\/)?(?:youtu\.be\/|(?:www\.|m\.)?youtube\.com\/(?:watch\?v=|v\/|embed\/|shorts\/|playlist\?list=)?)([a-zA-Z0-9_-]{11})/gi);
-	if (!urls) return m.reply('𝗧𝗵𝗶𝘀 𝗶𝘀 𝗻𝗼𝘁 𝗮 𝗬𝗼𝘂𝘁𝘂𝗯𝗲 𝗟𝗶𝗻𝗸');
-	let urlIndex = parseInt(text) - 1;
-	if (urlIndex < 0 || urlIndex >= urls.length)
-		return m.reply('𝗜𝗻𝘃𝗮𝗹𝗶𝗱 𝗟𝗶𝗻𝗸.');
+        let urls = text.match(/(?:https?:\/\/)?(?:youtu\.be\/|(?:www\.|m\.)?youtube\.com\/(?:watch\?v=|v\/|embed\/|shorts\/|playlist\?list=)?)([a-zA-Z0-9_-]{11})/gi);
+        if (!urls) return m.reply('𝗧𝗵𝗶𝘀 𝗶𝘀 𝗻𝗼𝘁 𝗮 𝗬𝗼𝘂𝘁𝘂𝗯𝗲 𝗟𝗶𝗻𝗸');
+        let urlIndex = parseInt(text) - 1;
+        if (urlIndex < 0 || urlIndex >= urls.length)
+                return m.reply('𝗜𝗻𝘃𝗮𝗹𝗶𝗱 𝗟𝗶𝗻𝗸.');
 
 
         const { videos } = await yts(text);
@@ -4228,11 +4318,11 @@ const title = data.result.title;
     }
 }
         
-		break;
+                break;
   
 case 'ytmp4':
 case "ytv": {
-	try {
+        try {
 
 if (!text) return m.reply("𝗣𝗿𝗼𝘃𝗶𝗱𝗲 𝗮 𝘃𝗮𝗹𝗶𝗱 𝗬𝗼𝘂𝗧𝘂𝗯𝗲 𝗹𝗶𝗻𝗸!")
 
@@ -4304,7 +4394,7 @@ const ytSearch = require('yt-search');
         return { success: false };
       }
     };
-	  
+          
     // List of APIs to try
     const apis = [
       `https://api-rin-tohsaka.vercel.app/download/ytmp4?url=${encodeURIComponent(videoUrl)}`,
@@ -4336,7 +4426,7 @@ const ytSearch = require('yt-search');
       fileName: `${videoDetails.title}.mp3`,
     };
 
-	const messagePaylod = {
+        const messagePaylod = {
       video: { url: downloadUrl },
       mimetype: 'video/mp4',
       caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗡𝗘𝗫𝗨𝗦-𝗠𝗗",
@@ -4352,12 +4442,12 @@ const ytSearch = require('yt-search');
     console.error('Error during download process:', error);
     return m.reply(`Download failed due to an error: ${error.message || error}`);
   }
-							     }
+                                                             }
 break;  
     case "ping": case "speed": {
                  
-	    await loading ()
-	     m.reply (`𝗣𝗼𝗻𝗴\n ${dreadedspeed.toFixed(4)} 𝗠𝘀`); 
+            await loading ()
+             m.reply (`𝗣𝗼𝗻𝗴\n ${dreadedspeed.toFixed(4)} 𝗠𝘀`); 
          } 
  break; 
   
@@ -4365,8 +4455,8 @@ break;
                  m.reply (`${runtime(process.uptime())}`) 
  } 
  break;
-		      case 'runtime':
-		let raven = `𝗡𝗘𝗫𝗨𝗦-𝗠𝗗𝘿 𝗵𝗮𝘀 𝗯𝗲𝗲𝗻 𝗿𝘂𝗻𝗻𝗶𝗻𝗴 𝘀𝗶𝗻𝗰𝗲 ${runtime(process.uptime())}`
+                      case 'runtime':
+                let raven = `𝗡𝗘𝗫𝗨𝗦-𝗠𝗗𝘿 𝗵𝗮𝘀 𝗯𝗲𝗲𝗻 𝗿𝘂𝗻𝗻𝗶𝗻𝗴 𝘀𝗶𝗻𝗰𝗲 ${runtime(process.uptime())}`
                 client.sendMessage(m.chat, {
                     text: raven,
                     contextInfo: {
@@ -4454,10 +4544,10 @@ if (!text) return m.reply("No emojis provided ? ")
   }
 
 
-	  }
-	  break;
+          }
+          break;
           case "lyrics": {
-		      const fetch = require('node-fetch');
+                      const fetch = require('node-fetch');
  const apiUrl = `https://api.dreaded.site/api/lyrics?title=${encodeURIComponent(text)}`;
 
     try {
@@ -4499,7 +4589,7 @@ if (!text) return m.reply("No emojis provided ? ")
         m.reply(`An error occurred while fetching the lyrics for "${text}".`);
     }
       }
-	break;
+        break;
 case 'github': {
  if (!text) return m.reply('Provide a github username to stalk');
  
@@ -4535,8 +4625,8 @@ m.reply("Unable to fetch data\n" + error)
 
 }
       }
-       break;  		      
-		
+       break;                 
+                
         case "toimage": case "photo": { 
     if (!quoted) throw 'Tag a static video with the command!'; 
     if (!/webp/.test(mime)) throw `Tag a sticker with ${prefix + command}`; 
@@ -4598,11 +4688,11 @@ case "movie":
  break;
  
       case "perez-md": case "owner": 
-		      const daddy = [ 'https://files.catbox.moe/yif0t1.mp4',
+                      const daddy = [ 'https://files.catbox.moe/yif0t1.mp4',
                                 'https://files.catbox.moe/o93jo6.mp4'
-				               ];
-		      const wife = daddy[Math.floor(Math.random() * daddy.length)];
-		      
+                                               ];
+                      const wife = daddy[Math.floor(Math.random() * daddy.length)];
+                      
  client.sendMessage(m.chat, { video: { url: wife }, caption: `𝗛𝗲𝗿𝗲 𝗶𝘀 𝗺𝘆 𝗢𝘄𝗻𝗲𝗿 💠 254108098259 💠 𝗢𝗻𝗹𝘆 𝗗𝗺 𝘄𝗶𝘁𝗵 𝗮 𝗿𝗲𝗮𝘀𝗼𝗻😁` }, {quoted: m}); 
   
  break;
@@ -4617,10 +4707,10 @@ case "movie":
     if (!/image/.test(mime)) throw `Tag an image you want to be the bot's profile picture with ${prefix + command}`; 
     if (/webp/.test(mime)) throw `Tag an image you want to be the bot's profile picture with ${prefix + command}`; 
     let media = await client.downloadAndSaveMediaMessage(quoted);
-		
+                
                     await client.updateProfilePicture(botNumber, { url: media }).catch((err) => fs.unlinkSync(media)); 
     reply `Bot's profile picture has been successfully updated!`; 
-	  }
+          }
     break;
 
           case 'broadcast': { 
@@ -4651,7 +4741,7 @@ case "movie":
      } 
  break;
 case "epl": case "epl-table": {
-		      
+                      
 try {
         const data = await fetchJson('https://api.dreaded.site/api/standings/PL');
         const standings = data.data;
@@ -4664,9 +4754,9 @@ try {
     }
 
  }
-	break;
+        break;
 case "mail": {
-	const  { TempMail } = require("tempmail.lol");
+        const  { TempMail } = require("tempmail.lol");
 
 const tempmail = new TempMail();
 
@@ -4680,11 +4770,11 @@ const mas = await client.sendMessage(m.chat, { text: `${inbox.token}` });
 await client.sendMessage(m.chat, { text: `Quoted text is your token. To fetch messages in your email use <.inbox your-token>`}, { quoted: mas});
 
       }
-       break;		      
+       break;                 
  case "gemini": {
 
     try {
-        if (!text) return m.reply("This is Raven, an AI using Gemini APIs to process text, provide yr query");
+        if (!text) return m.reply("This is Nexus AI, powered by Gemini. Provide your query and I'll help!");
 
        
         const { default: Gemini } = await import('gemini-ai');
@@ -4718,7 +4808,7 @@ break;
   
   
  break;
-		      case "dlt": case "dil": { 
+                      case "dlt": case "dil": { 
  if (!m.quoted) throw `No message quoted for deletion`; 
  let { chat, fromMe, id, isBaileys } = m.quoted; 
  if (isBaileys) throw `I cannot delete. Quoted message is my message or another bot message.`; 
@@ -4731,8 +4821,8 @@ break;
  if (!Owner) throw NotOwner; 
  if (!m.quoted) throw `𝗧𝗮𝗴 𝘀𝗼𝗺𝗲𝗼𝗻𝗲!`  
  let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-	 if (users == "254114660061@s.whatsapp.net") return m.reply("𝗜 𝗰𝗮𝗻𝗻𝗼𝘁 𝗯𝗹𝗼𝗰𝗸 𝗺𝘆 𝗢𝘄𝗻𝗲𝗿 😡");
-		  if (users  == client.decodeJid(client.user.id)) throw '𝗜 𝗰𝗮𝗻𝗻𝗼𝘁 𝗯𝗹𝗼𝗰𝗸 𝗺𝘆𝘀𝗲𝗹𝗳 𝗶𝗱𝗶𝗼𝘁 😡';
+         if (users == "254114660061@s.whatsapp.net") return m.reply("𝗜 𝗰𝗮𝗻𝗻𝗼𝘁 𝗯𝗹𝗼𝗰𝗸 𝗺𝘆 𝗢𝘄𝗻𝗲𝗿 😡");
+                  if (users  == client.decodeJid(client.user.id)) throw '𝗜 𝗰𝗮𝗻𝗻𝗼𝘁 𝗯𝗹𝗼𝗰𝗸 𝗺𝘆𝘀𝗲𝗹𝗳 𝗶𝗱𝗶𝗼𝘁 😡';
  await client.updateBlockStatus(users, 'block'); 
  m.reply (`𝗕𝗹𝗼𝗰𝗸𝗲𝗱 𝘀𝘂𝗰𝗰𝗲𝘀𝗳𝘂𝗹𝗹𝘆!`); 
  } 
@@ -4757,8 +4847,8 @@ break;
   
   
  break;
-	      case "enc": case "encrypte": {
-		      const Obf = require("javascript-obfuscator");
+              case "enc": case "encrypte": {
+                      const Obf = require("javascript-obfuscator");
 
     // Check if the quoted message has text
     if (m.quoted && m.quoted.text) {
@@ -4782,7 +4872,7 @@ break;
         m.reply("Quote/Tag a valid JavaScript code to encrypt!");
     }
 }
-	break;
+        break;
  
         case 'gpt3': {
         if (!text) return reply(`Hello there, How can i help you?`);
@@ -4796,10 +4886,10 @@ break;
           } else {
             reply(d.BK9);
           }
-	}
+        }
 break;
-	      case 'gcprofile': {
-		      function convertTimestamp(timestamp) {
+              case 'gcprofile': {
+                      function convertTimestamp(timestamp) {
   const d = new Date(timestamp * 1000);
   const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   return {
@@ -4828,13 +4918,13 @@ await client.sendMessage(m.chat, { image: { url: pp },
         }, {quoted: m })
 
 }
-	 break;
-		      case 'tovideo': case 'mp4': case 'tovid': {
-			
+         break;
+                      case 'tovideo': case 'mp4': case 'tovid': {
+                        
                 if (!quoted) return reply('Reply to Sticker')
                 if (!/webp/.test(mime)) return reply(`reply sticker with caption *${prefix + command}*`)
                 
-		        let webp2mp4File = await fetch(`https://bk9.fun/converter/webpToMp4?url=${quoted}`)
+                        let webp2mp4File = await fetch(`https://bk9.fun/converter/webpToMp4?url=${quoted}`)
                 let media = await client.downloadAndSaveMediaMessage(quoted)
                 let webpToMp4 = await webp2mp4File(media)
                 await client.sendMessage(m.chat, { video: { url: webpToMp4.result, caption: 'Convert Webp To Video' } }, { quoted: m })
@@ -4911,10 +5001,10 @@ async function handleGPTMessage(text, m) {
             if (!budy.toLowerCase()) return;
             if (argsLog || (cmd && !m.isGroup)) {
               // client.sendReadReceipt(m.chat, m.sender, [m.key.id])
-              console.log(chalk.black(chalk.bgRed("[ ERROR ]")), color("command", "turquoise"), color(`${prefix}${command}`, "turquoise"), color("Raven", "turquoise"));
+              console.log(chalk.black(chalk.bgRed("[ ERROR ]")), color("command", "turquoise"), color(`${prefix}${command}`, "turquoise"), color("Nexus", "turquoise"));
             } else if (argsLog || (cmd && m.isGroup)) {
               // client.sendReadReceipt(m.chat, m.sender, [m.key.id])
-              console.log(chalk.black(chalk.bgRed("[ ERROR ]")), color("command", "turquoise"), color(`${prefix}${command}`, "turquoise"), color("Raven", "turquoise"));
+              console.log(chalk.black(chalk.bgRed("[ ERROR ]")), color("command", "turquoise"), color(`${prefix}${command}`, "turquoise"), color("Nexus", "turquoise"));
             }
           }
         }

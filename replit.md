@@ -1,4 +1,4 @@
-# PEREZ-MD WhatsApp Bot
+# NEXUS-MD WhatsApp Bot
 
 ## Overview
 A WhatsApp Multi-Device bot built with Node.js using the Baileys library. The bot connects to WhatsApp and provides automated responses and management features.
