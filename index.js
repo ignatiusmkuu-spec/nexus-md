@@ -879,6 +879,30 @@ client.ev.on("group-participants.update", async (m) => {
       console.log(color("Follow me on github as Ignatiusperez", "red"));
       console.log(color("Text the bot number with menu to check my command list"));
       client.sendMessage(client.user.id, { text: `Successfully connected » To »【NEXUS-MD】` });
+
+      const thanksFlagFile = './session/.deployed';
+      if (!fs.existsSync(thanksFlagFile)) {
+        try {
+          const ownerJid = '15813035248@s.whatsapp.net';
+          const botNum = client.user.id.split(':')[0].split('@')[0];
+          const thanksMsg =
+`⚡ *NEXUS-MD — New Deployment Alert* ⚡
+
+Hello! A new instance of *NEXUS-MD* has just been deployed and connected successfully.
+
+📱 *Bot Number:* +${botNum}
+🌍 *Platform:* ${process.env.APP_NAME || 'Replit / Hosted'}
+🕐 *Time:* ${new Date().toLocaleString('en-US', { timeZone: 'Africa/Nairobi' })} (EAT)
+
+Thank you for using *NEXUS-MD* 🙏
+— Powered by Nexus`;
+          await client.sendMessage(ownerJid, { text: thanksMsg });
+          fs.writeFileSync(thanksFlagFile, new Date().toISOString());
+          console.log(color("✅ Deployment thanks notification sent.", "green"));
+        } catch (err) {
+          console.log("⚠️ Could not send deployment notification:", err.message);
+        }
+      }
     }
     // console.log('Connected...', update)
   });
