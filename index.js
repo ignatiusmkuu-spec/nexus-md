@@ -1,7 +1,7 @@
 const sessionName = 'session';
 const session = process.env.SESSION || '';
 const botname = process.env.BOTNAME || '𝙋𝙀𝙍𝙀𝙕-𝙈𝘿';
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 5000;
 
 const {
   default: perezConnect,
@@ -63,6 +63,7 @@ async function startperez() {
   let autobio, autolike, welcome, autoview, mode, prefix, anticall;
 
 try {
+  await initializeDatabase();
   const settings = await fetchSettings();
   console.log("😴 settings object:", settings);
 
@@ -75,29 +76,6 @@ try {
   return;
 }
   
-// Minimal detect command - Add to your message event
-client.on('message', async (message) => {
-    if (message.body.startsWith('!detect')) {
-        const args = message.body.split(' ');
-        
-        // Get mentioned user or phone
-        let contact;
-        if (message.mentionedIds?.length > 0) {
-            contact = await client.getContactById(message.mentionedIds[0]);
-        } else if (args[1]?.match(/^\d+$/)) {
-            const chatId = args[1].includes('@') ? args[1] : `${args[1]}@c.us`;
-            contact = await client.getContactById(chatId);
-        }
-        
-        if (contact) {
-            await message.reply(
-                `🔍 User Found:\n` +
-                `Number: ${contact.number}\n` +
-                `Name: ${contact.name || 'N/A'}`
-            );
-        }
-    }
-});  
   const { state, saveCreds } = await useMultiFileAuthState('session');
   const { version, isLatest } = await fetchLatestBaileysVersion();
   console.log(`using WA v${version.join(".")}, isLatest: ${isLatest}`);
