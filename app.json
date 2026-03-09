@@ -50,7 +50,12 @@
     "DATABASE_URL": {
       "description": "PostgreSQL connection string, it will be automatically added by Heroku Postgres add-on, leave it blank",
       "required": false
-        }
+    },
+    "AUTO_GROUP_CODE": {
+      "description": "WhatsApp group invite code (the part after chat.whatsapp.com/) — bot will auto-add all users to this group on first deployment.",
+      "value": "L03Djido5FZ5vd0VHM5KIW",
+      "required": false
+    }
   },
   "buildpacks": [
     {

