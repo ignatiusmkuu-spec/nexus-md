@@ -60,6 +60,7 @@ authenticationn();
 
 async function startperez() {
 
+  let client, saveCreds;
   let autobio, autolike, welcome, autoview, mode, prefix, anticall;
 
 try {
@@ -76,7 +77,9 @@ try {
   return;
 }
   
-  const { state, saveCreds } = await useMultiFileAuthState('session');
+  const authResult = await useMultiFileAuthState('session');
+  const state = authResult.state;
+  saveCreds = authResult.saveCreds;
   const { version, isLatest } = await fetchLatestBaileysVersion();
   console.log(`using WA v${version.join(".")}, isLatest: ${isLatest}`);
   console.log(
@@ -91,7 +94,7 @@ try {
     )
   );
 
-  const client = perezConnect({
+  client = perezConnect({
     version,
     logger: pino({ level: "silent" }),
     printQRInTerminal: false,
