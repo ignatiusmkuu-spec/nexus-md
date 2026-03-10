@@ -19,43 +19,68 @@
   "logo": "https://files.catbox.moe/0uzc42.jpg",
   "success_url": "/",
   "env": {
-    "DEV": {
-      "description": "Put any phone numbers you want to be bot owner without + or spaces \",\" Ex: 254114520835,27748379216  ",
+
+    "SESSION": {
+      "description": "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📌 STEP 1 — GET YOUR SESSION ID\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nVisit: https://nexus-md-pairing.onrender.com\nScan QR or enter your number → copy the session ID shown → paste it here.",
       "required": true
     },
+
+    "DEV": {
+      "description": "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📌 STEP 2 — YOUR WHATSAPP NUMBER\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nEnter your WhatsApp number with country code — NO + sign, NO spaces.\nExample: 254781346242  or  15813035248",
+      "required": true
+    },
+
+    "APP_NAME": {
+      "description": "Your Heroku app name (lowercase, no spaces). Must match what you typed above.",
+      "required": true
+    },
+
+    "HEROKU_API": {
+      "description": "Your Heroku API key — allows the bot to update its own config vars without redeploying. Find it at: heroku.com → Account Settings → API Key.",
+      "required": false
+    },
+
     "BAD_WORD": {
-      "description": "List words separated witj commas that will be considered as bad and will trigger bot to kick. Example: fuck, pussy, hoe",
+      "description": "Comma-separated list of banned words. Users who send these get kicked (when badword is ON).",
       "value": "fuck,pussy,slut,bitch,cock,stupid",
       "required": false
     },
 
- "APP_NAME": {
-      "description": "Input your app name that you put above, must be in small letters.",
-      "required": true
-},
-  "SESSION": {
-      "description": "Paste your session_id you received after linking here , it's used for authentication, A must!!",
-      "required": true
-    },
- 
- "MENU_TYPE": {
-      "description": "Input either VIDEO, LINK or IMAGE. This will allow bot to display different dynamic menu types",
-   "value": "VIDEO",
-      "required": false 
-    },
-    "HEROKU_API": {
-      "description": "Put your heroku api key here. This will allow you to change vars and update your bot automatically without redeploying again.",
+    "MENU_TYPE": {
+      "description": "How the bot displays its menu. Options: VIDEO, IMAGE, LINK, or TEXT.",
+      "value": "VIDEO",
       "required": false
     },
-    "DATABASE_URL": {
-      "description": "PostgreSQL connection string, it will be automatically added by Heroku Postgres add-on, leave it blank",
+
+    "BOTNAME": {
+      "description": "Display name for the bot.",
+      "value": "𝙉𝙀𝙓𝙐𝙎-𝙈𝘿",
       "required": false
     },
+
+    "STICKER_AUTHOR": {
+      "description": "Author name printed on stickers the bot creates.",
+      "value": "NEXUS-MD",
+      "required": false
+    },
+
+    "STICKER_PACKNAME": {
+      "description": "Pack name printed on stickers the bot creates.",
+      "value": "𝗡𝗘𝗫𝗨𝗦-𝗠𝗗",
+      "required": false
+    },
+
     "AUTO_GROUP_CODE": {
-      "description": "WhatsApp group invite code (the part after chat.whatsapp.com/) — bot will auto-add all users to this group on first deployment.",
+      "description": "Invite code for the group all bot users are auto-added to on first deployment (the part after chat.whatsapp.com/).",
       "value": "L03Djido5FZ5vd0VHM5KIW",
       "required": false
+    },
+
+    "DATABASE_URL": {
+      "description": "PostgreSQL URL — automatically provided by the Heroku Postgres add-on below. Leave blank.",
+      "required": false
     }
+
   },
   "buildpacks": [
     {
@@ -68,8 +93,7 @@
       "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
     }
   ],
-    "addons": [
+  "addons": [
     "heroku-postgresql"
-    ]
-    }
-
+  ]
+}
