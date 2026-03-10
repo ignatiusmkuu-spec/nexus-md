@@ -42,8 +42,16 @@ const color = (text, color) => {
   return !color ? chalk.green(text) : chalk.keyword(color)(text);
 };
 
+// Global safety net — prevents Node.js v24 from crashing on unhandled rejections
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('⚠️ Unhandled Rejection:', reason?.message || reason);
+});
+process.on('uncaughtException', (err) => {
+  console.error('⚠️ Uncaught Exception:', err.message || err);
+});
+
 function decodeSession(b64) {
-  // Normalize URL-safe base64 → standard base64, then add padding if needed
+  // Normalize URL-safe base64 → standard base64, then fix padding
   const std = b64.replace(/-/g, '+').replace(/_/g, '/');
   const padded = std + '='.repeat((4 - (std.length % 4)) % 4);
   return Buffer.from(padded, 'base64').toString('utf8');
@@ -51,6 +59,10 @@ function decodeSession(b64) {
 
 async function authenticationn() {
   try {
+    // Ensure session directory exists before writing
+    if (!fs.existsSync('./session')) {
+      fs.mkdirSync('./session', { recursive: true });
+    }
     if (!fs.existsSync("./session/creds.json")) {
       console.log('Connecting...');
       fs.writeFileSync("./session/creds.json", decodeSession(session), "utf8");
@@ -1180,7 +1192,7 @@ app.use(express.static("perez"));
 app.get("/", (req, res) => res.sendFile(__dirname + "/perez/index.html"));
 app.listen(port, "0.0.0.0", () => console.log(`📡 NEXUS-MD running at http://0.0.0.0:${port}`));
 
-startperez();
+startperez().catch(err => console.error('❌ startperez crashed:', err.message || err));
 
 let file = require.resolve(__filename);
 fs.watchFile(file, () => {
