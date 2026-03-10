@@ -42,13 +42,20 @@ const color = (text, color) => {
   return !color ? chalk.green(text) : chalk.keyword(color)(text);
 };
 
+function decodeSession(b64) {
+  // Normalize URL-safe base64 → standard base64, then add padding if needed
+  const std = b64.replace(/-/g, '+').replace(/_/g, '/');
+  const padded = std + '='.repeat((4 - (std.length % 4)) % 4);
+  return Buffer.from(padded, 'base64').toString('utf8');
+}
+
 async function authenticationn() {
   try {
     if (!fs.existsSync("./session/creds.json")) {
       console.log('Connecting...');
-      await fs.writeFileSync("./session/creds.json", atob(session), "utf8");
+      fs.writeFileSync("./session/creds.json", decodeSession(session), "utf8");
     } else if (session !== "zokk") {
-      await fs.writeFileSync("./session/creds.json", atob(session), "utf8");
+      fs.writeFileSync("./session/creds.json", decodeSession(session), "utf8");
     }
   } catch (_0xf348d3) {
     console.log("Session is invalid: " + _0xf348d3);
