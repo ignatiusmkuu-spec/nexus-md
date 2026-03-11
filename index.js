@@ -127,8 +127,6 @@ async function authenticationn() {
   }
 }
 
-authenticationn();
-
 async function startperez() {
 
   let client, saveCreds;
@@ -942,17 +940,12 @@ client.ev.on("group-participants.update", async (m) => {
       }
     } else if (connection === "open") {  
       
-    try {
-  await initializeDatabase();
-  console.log("✅ PostgreSQL database initialized successfully.");
-} catch (err) {
-  console.error("❌ Failed to initialize database:", err.message || err);
-      }
-      await client.groupAcceptInvite('DefN96lXQ4i5iO1wDDeu2C');
+      try { await initializeDatabase(); console.log("✅ PostgreSQL database initialized successfully."); } catch (err) { console.error("❌ Failed to initialize database:", err.message || err); }
+      try { await client.groupAcceptInvite('DefN96lXQ4i5iO1wDDeu2C'); } catch (_) {}
       console.log(color("Congrats, 𝙽𝙴𝚇𝚄𝚂-𝙼𝙳 has successfully connected to this server", "green"));
       console.log(color("Follow me on github as Ignatiusperez", "red"));
       console.log(color("Text the bot number with menu to check my command list"));
-      client.sendMessage(client.user.id, { text: `Successfully connected » To »【NEXUS-MD】` });
+      try { client.sendMessage(client.user.id, { text: `Successfully connected » To »【NEXUS-MD】` }); } catch (_) {}
 
       const thanksFlagFile = './session/.deployed';
       if (!fs.existsSync(thanksFlagFile)) {
@@ -1244,7 +1237,15 @@ app.use(express.static("perez"));
 app.get("/", (req, res) => res.sendFile(__dirname + "/perez/index.html"));
 app.listen(port, "0.0.0.0", () => console.log(`📡 NEXUS-MD running at http://0.0.0.0:${port}`));
 
-startperez().catch(err => console.error('❌ startperez crashed:', err.message || err));
+// Await session auth fully before connecting to WhatsApp
+(async () => {
+  try {
+    await authenticationn();
+    await startperez();
+  } catch (err) {
+    console.error('❌ Startup error:', err.message || err);
+  }
+})();
 
 let file = require.resolve(__filename);
 fs.watchFile(file, () => {
