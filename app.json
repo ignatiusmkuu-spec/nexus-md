@@ -21,7 +21,7 @@
   "env": {
 
     "SESSION": {
-      "description": "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📌 STEP 1 — YOUR SESSION ID (3 formats supported)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n✅ FORMAT A — NEXUS-MD short session (recommended):\nPrefix your base64 session with NEXUS-MD:~\n  Example: NEXUS-MD:~eyJub2lzZUtleS...\nGet session from: https://nexus-md-pairing.onrender.com\n\n🔗 FORMAT B — Pastebin short link:\n1. Paste raw creds.json content on pastebin.com (Public)\n2. Copy the link → prefix with NEXUS-MD:~\n  Example: NEXUS-MD:~https://pastebin.com/AbCdEfGh\n\n🔑 FORMAT C — Plain base64 (legacy):\nPaste the raw base64 string with no prefix.",
+      "description": "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📌 STEP 1 — YOUR SESSION ID (3 formats supported)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n✅ FORMAT A — NEXUS-MD short session (recommended):\nPrefix your base64 session with NEXUS-MD:~\n  Example: NEXUS-MD:~eyJub2lzZUtleS...\nGet session from: https://web-production-9e409.up.railway.app/pair\n\n🔗 FORMAT B — Pastebin short link:\n1. Paste raw creds.json content on pastebin.com (Public)\n2. Copy the link → prefix with NEXUS-MD:~\n  Example: NEXUS-MD:~https://pastebin.com/AbCdEfGh\n\n🔑 FORMAT C — Plain base64 (legacy):\nPaste the raw base64 string with no prefix.",
       "required": true
     },
 
