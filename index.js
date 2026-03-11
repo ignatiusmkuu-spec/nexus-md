@@ -90,12 +90,27 @@ async function authenticationn() {
     let credsData = null;
 
     if (session && session.startsWith('NEXUS-MD:~')) {
-      // ── Short session URL format: NEXUS-MD:~https://pastebin.com/AbCdEfGh ──
-      const url = session.slice('NEXUS-MD:~'.length).trim();
-      console.log('🔗 Short session detected — fetching from URL...');
-      credsData = await fetchSessionFromUrl(url);
+      const payload = session.slice('NEXUS-MD:~'.length).trim();
+
+      if (payload.startsWith('http://') || payload.startsWith('https://')) {
+        // ── Format: NEXUS-MD:~https://pastebin.com/AbCdEfGh ──
+        console.log('🔗 Short session URL detected — fetching from URL...');
+        credsData = await fetchSessionFromUrl(payload);
+      } else {
+        // ── Format: NEXUS-MD:~<base64> — decode directly ──
+        console.log('🔑 NEXUS-MD short session (base64) detected — decoding...');
+        const decoded = decodeSession(payload);
+        // Accept if decoded result looks like JSON creds
+        try {
+          JSON.parse(decoded);
+          credsData = decoded;
+        } catch (_) {
+          // fallback: write the raw payload as-is (already JSON string)
+          credsData = payload;
+        }
+      }
     } else if (session && session !== 'zokk') {
-      // ── Standard base64 session ──
+      // ── Standard base64 session (no prefix) ──
       credsData = decodeSession(session);
     }
 

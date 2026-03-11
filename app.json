@@ -21,7 +21,7 @@
   "env": {
 
     "SESSION": {
-      "description": "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📌 STEP 1 — YOUR SESSION ID (choose one format)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🔑 FORMAT A — Full base64 (default):\nVisit https://nexus-md-pairing.onrender.com → scan QR or enter number → copy the session ID → paste it here.\n\n🔗 FORMAT B — Short Pastebin link (recommended for Heroku):\n1. Go to https://pastebin.com and paste your raw creds.json content\n2. Save as Public → copy the link (e.g. https://pastebin.com/AbCdEfGh)\n3. Prefix it with NEXUS-MD:~ and paste here:\n   Example: NEXUS-MD:~https://pastebin.com/AbCdEfGh\n\nFormat B avoids Heroku's 32KB env var limit.",
+      "description": "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📌 STEP 1 — YOUR SESSION ID (3 formats supported)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n✅ FORMAT A — NEXUS-MD short session (recommended):\nPrefix your base64 session with NEXUS-MD:~\n  Example: NEXUS-MD:~eyJub2lzZUtleS...\nGet session from: https://nexus-md-pairing.onrender.com\n\n🔗 FORMAT B — Pastebin short link:\n1. Paste raw creds.json content on pastebin.com (Public)\n2. Copy the link → prefix with NEXUS-MD:~\n  Example: NEXUS-MD:~https://pastebin.com/AbCdEfGh\n\n🔑 FORMAT C — Plain base64 (legacy):\nPaste the raw base64 string with no prefix.",
       "required": true
     },
 
