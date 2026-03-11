@@ -21,7 +21,7 @@
   "env": {
 
     "SESSION": {
-      "description": "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📌 STEP 1 — GET YOUR SESSION ID\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nVisit: https://nexus-md-pairing.onrender.com\nScan QR or enter your number → copy the session ID shown → paste it here.",
+      "description": "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📌 STEP 1 — YOUR SESSION ID (choose one format)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🔑 FORMAT A — Full base64 (default):\nVisit https://nexus-md-pairing.onrender.com → scan QR or enter number → copy the session ID → paste it here.\n\n🔗 FORMAT B — Short Pastebin link (recommended for Heroku):\n1. Go to https://pastebin.com and paste your raw creds.json content\n2. Save as Public → copy the link (e.g. https://pastebin.com/AbCdEfGh)\n3. Prefix it with NEXUS-MD:~ and paste here:\n   Example: NEXUS-MD:~https://pastebin.com/AbCdEfGh\n\nFormat B avoids Heroku's 32KB env var limit.",
       "required": true
     },
 

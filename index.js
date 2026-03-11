@@ -57,20 +57,57 @@ function decodeSession(b64) {
   return Buffer.from(padded, 'base64').toString('utf8');
 }
 
+function toRawUrl(url) {
+  // Convert Pastebin viewer URL → raw URL
+  // e.g. https://pastebin.com/AbCdEfGh → https://pastebin.com/raw/AbCdEfGh
+  return url.replace(/pastebin\.com\/(?!raw\/)([A-Za-z0-9]+)$/, 'pastebin.com/raw/$1');
+}
+
+async function fetchSessionFromUrl(url) {
+  const rawUrl = toRawUrl(url.trim());
+  console.log(`📥 Fetching session from: ${rawUrl}`);
+  const response = await axios.get(rawUrl, { timeout: 15000 });
+  const content = typeof response.data === 'object'
+    ? JSON.stringify(response.data)
+    : String(response.data).trim();
+  // If it parses as JSON it's raw creds — use directly
+  try {
+    JSON.parse(content);
+    return content;
+  } catch (_) {
+    // Otherwise treat as base64
+    return decodeSession(content);
+  }
+}
+
 async function authenticationn() {
   try {
     // Ensure session directory exists before writing
     if (!fs.existsSync('./session')) {
       fs.mkdirSync('./session', { recursive: true });
     }
-    if (!fs.existsSync("./session/creds.json")) {
-      console.log('Connecting...');
-      fs.writeFileSync("./session/creds.json", decodeSession(session), "utf8");
-    } else if (session !== "zokk") {
-      fs.writeFileSync("./session/creds.json", decodeSession(session), "utf8");
+
+    let credsData = null;
+
+    if (session && session.startsWith('NEXUS-MD:~')) {
+      // ── Short session URL format: NEXUS-MD:~https://pastebin.com/AbCdEfGh ──
+      const url = session.slice('NEXUS-MD:~'.length).trim();
+      console.log('🔗 Short session detected — fetching from URL...');
+      credsData = await fetchSessionFromUrl(url);
+    } else if (session && session !== 'zokk') {
+      // ── Standard base64 session ──
+      credsData = decodeSession(session);
+    }
+
+    if (credsData) {
+      if (!fs.existsSync('./session/creds.json')) {
+        console.log('Connecting...');
+      }
+      fs.writeFileSync('./session/creds.json', credsData, 'utf8');
+      console.log('✅ Session credentials written.');
     }
   } catch (_0xf348d3) {
-    console.log("Session is invalid: " + _0xf348d3);
+    console.log('Session is invalid: ' + _0xf348d3);
     return;
   }
 }
