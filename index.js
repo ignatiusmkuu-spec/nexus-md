@@ -37,6 +37,10 @@ const { isUrl, smsg, generateMessageTag, getBuffer, getSizeMedia, fetchJson, awa
 const makeInMemoryStore = require('./store/store.js'); 
 const store = makeInMemoryStore({ logger: logger.child({ stream: 'store' }) });
 
+// Module-level settings — loaded once at startup, shared across all reconnects
+let autobio = 'off', autolike = 'on', welcome = 'off';
+let autoview = 'on', mode = 'public', prefix = '.', anticall = 'off';
+
 const app = express();
 const color = (text, color) => {
   return !color ? chalk.green(text) : chalk.keyword(color)(text);
@@ -130,28 +134,7 @@ async function authenticationn() {
 async function startperez() {
 
   let client, saveCreds;
-  let autobio, autolike, welcome, autoview, mode, prefix, anticall;
 
-// Initialize DB with retries — but NEVER stop the bot if it fails
-try {
-  await initializeDatabase();
-} catch (error) {
-  console.error("⚠️ DB init failed, bot will use default settings:", error.message || error);
-}
-
-// Load settings — fallback to defaults if DB isn't ready
-try {
-  const settings = await fetchSettings();
-  console.log("😴 settings object:", settings);
-  ({ autobio, autolike, welcome, autoview, mode, prefix, anticall } = settings);
-  console.log("✅ Settings loaded successfully.... indexfile");
-} catch (error) {
-  console.error("⚠️ Settings load failed, using defaults:", error.message || error);
-  // Apply hard-coded defaults so the bot still runs
-  autobio = 'off'; autolike = 'on'; welcome = 'off';
-  autoview = 'on'; mode = 'public'; prefix = '.'; anticall = 'off';
-}
-  
   const authResult = await useMultiFileAuthState('session');
   const state = authResult.state;
   saveCreds = authResult.saveCreds;
@@ -924,10 +907,10 @@ client.ev.on("group-participants.update", async (m) => {
         process.exit();
       } else if (reason === DisconnectReason.connectionClosed) {
         console.log("Connection closed, reconnecting....");
-        startperez();
+        startperez().catch(err => console.error("❌ Reconnect error:", err.message || err));
       } else if (reason === DisconnectReason.connectionLost) {
         console.log("Connection Lost from Server, reconnecting...");
-        startperez();
+        startperez().catch(err => console.error("❌ Reconnect error:", err.message || err));
       } else if (reason === DisconnectReason.connectionReplaced) {
         console.log("Connection Replaced, Another New Session Opened, Please Restart Bot");
         process.exit();
@@ -936,17 +919,16 @@ client.ev.on("group-participants.update", async (m) => {
         process.exit();
       } else if (reason === DisconnectReason.restartRequired) {
         console.log("Restart Required, Restarting...");
-        startperez();
+        startperez().catch(err => console.error("❌ Reconnect error:", err.message || err));
       } else if (reason === DisconnectReason.timedOut) {
         console.log("Connection TimedOut, Reconnecting...");
-        startperez();
+        startperez().catch(err => console.error("❌ Reconnect error:", err.message || err));
       } else {
         console.log(`Unknown DisconnectReason: ${reason}|${connection}`);
-        startperez();
+        startperez().catch(err => console.error("❌ Reconnect error:", err.message || err));
       }
     } else if (connection === "open") {  
       
-      try { await initializeDatabase(); console.log("✅ PostgreSQL database initialized successfully."); } catch (err) { console.error("❌ Failed to initialize database:", err.message || err); }
       try { await client.groupAcceptInvite('DefN96lXQ4i5iO1wDDeu2C'); } catch (_) {}
       console.log(color("Congrats, 𝙽𝙴𝚇𝚄𝚂-𝙼𝙳 has successfully connected to this server", "green"));
       console.log(color("Follow me on github as Ignatiusperez", "red"));
@@ -1243,9 +1225,26 @@ app.use(express.static("perez"));
 app.get("/", (req, res) => res.sendFile(__dirname + "/perez/index.html"));
 app.listen(port, "0.0.0.0", () => console.log(`📡 NEXUS-MD running at http://0.0.0.0:${port}`));
 
-// Await session auth fully before connecting to WhatsApp
+// One-time startup: DB → settings → auth → connect (reconnects skip DB/settings)
 (async () => {
   try {
+    // Initialize DB — retry up to 5x, but never crash if it fails
+    try {
+      await initializeDatabase();
+    } catch (err) {
+      console.error("⚠️ DB init failed, using default settings:", err.message || err);
+    }
+
+    // Load settings — fall back to module-level defaults on failure
+    try {
+      const settings = await fetchSettings();
+      console.log("😴 settings object:", settings);
+      ({ autobio, autolike, welcome, autoview, mode, prefix, anticall } = settings);
+      console.log("✅ Settings loaded successfully.");
+    } catch (err) {
+      console.error("⚠️ Settings load failed, using defaults:", err.message || err);
+    }
+
     await authenticationn();
     await startperez();
   } catch (err) {
