@@ -56,21 +56,13 @@ Our AI features use random APIs to run, so sometimes they may be down.
 
 ###  ` Deploy to Heroku`
 <p align="center">
-     <a href="https://verification-lemon.vercel.app/">
+     <a href="https://heroku.com/deploy?template=https://github.com/Ignatiusperez/Perez">
        <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy to Heroku"/>
      </a>
  </p>
 
- 
+- Fill in only **SESSION** and **DEV** (your phone number) — all other settings have defaults.
 
-    
-
-- Fill in the required variables into your hosting site for bot to work.
- </h2>
-     
-
-    
- 
 
 
 
