@@ -132,18 +132,24 @@ async function startperez() {
   let client, saveCreds;
   let autobio, autolike, welcome, autoview, mode, prefix, anticall;
 
+// Initialize DB with retries — but NEVER stop the bot if it fails
 try {
   await initializeDatabase();
+} catch (error) {
+  console.error("⚠️ DB init failed, bot will use default settings:", error.message || error);
+}
+
+// Load settings — fallback to defaults if DB isn't ready
+try {
   const settings = await fetchSettings();
   console.log("😴 settings object:", settings);
-
-  
   ({ autobio, autolike, welcome, autoview, mode, prefix, anticall } = settings);
-
   console.log("✅ Settings loaded successfully.... indexfile");
 } catch (error) {
-  console.error("❌ Failed to load settings:...indexfile", error.message || error);
-  return;
+  console.error("⚠️ Settings load failed, using defaults:", error.message || error);
+  // Apply hard-coded defaults so the bot still runs
+  autobio = 'off'; autolike = 'on'; welcome = 'off';
+  autoview = 'on'; mode = 'public'; prefix = '.'; anticall = 'off';
 }
   
   const authResult = await useMultiFileAuthState('session');
